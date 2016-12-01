@@ -1,15 +1,9 @@
 function magnitude(v) {
-  return v.map(Math.abs).reduce((x, y) => x + y, 0);
-};
+  return v.map(Math.abs).reduce((x, y) => x + y);
+}
 
 function add(u, v) {
-  var u = [...u];
-  var v = [...v];
-  var sum = [];
-  while (u.length > 0 && v.length > 0) {
-    sum.unshift(u.pop() + v.pop());
-  }
-  return sum;
+  return u.reduce((acc, _, i) => [...acc, u[i] + v[i]], []);
 }
 
 const North = [0, 1];
@@ -17,12 +11,6 @@ const East = [1, 0];
 const South = [0, -1];
 const West = [-1, 0];
 const Zero = [0, 0];
-
-const initialState = {
-  position: Zero,
-  direction: North,
-  visited: new Set([Zero.toString()])
-}
 
 function turnLeft(direction) {
   if (direction === North) { return West; }
@@ -64,6 +52,12 @@ function step(state, command) {
     visited: visited,
     firstVisitedTwice: firstVisitedTwice
   };
+}
+
+const initialState = {
+  position: Zero,
+  direction: North,
+  visited: new Set([Zero.toString()])
 }
 
 export function part1(input) {

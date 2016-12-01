@@ -91,17 +91,13 @@ var toConsumableArray = function (arr) {
 function magnitude(v) {
   return v.map(Math.abs).reduce(function (x, y) {
     return x + y;
-  }, 0);
+  });
 }
 
 function add(u, v) {
-  var u = [].concat(u);
-  var v = [].concat(v);
-  var sum = [];
-  while (u.length > 0 && v.length > 0) {
-    sum.unshift(u.pop() + v.pop());
-  }
-  return sum;
+  return u.reduce(function (acc, _, i) {
+    return [].concat(toConsumableArray(acc), [u[i] + v[i]]);
+  }, []);
 }
 
 var North = [0, 1];
@@ -109,12 +105,6 @@ var East = [1, 0];
 var South = [0, -1];
 var West = [-1, 0];
 var Zero = [0, 0];
-
-var initialState = {
-  position: Zero,
-  direction: North,
-  visited: new Set([Zero.toString()])
-};
 
 function turnLeft(direction) {
   if (direction === North) {
@@ -177,6 +167,12 @@ function step(state, command) {
     firstVisitedTwice: firstVisitedTwice
   };
 }
+
+var initialState = {
+  position: Zero,
+  direction: North,
+  visited: new Set([Zero.toString()])
+};
 
 function part1(input) {
   return magnitude(input.reduce(step, initialState).position);
