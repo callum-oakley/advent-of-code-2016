@@ -1,0 +1,33 @@
+{
+  "name": "advent-of-code-2016",
+  "version": "1.0.0",
+  "description": ".",
+  "main": "src/main.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.19.0",
+    "babel-preset-es2015-rollup": "^1.2.0",
+    "npm-watch": "^0.1.6",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-json": "^2.0.2"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "build": "src/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hot-leaf-juice/advent-of-code-2016.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hot-leaf-juice/advent-of-code-2016/issues"
+  },
+  "homepage": "https://github.com/hot-leaf-juice/advent-of-code-2016#readme"
+}
