@@ -2,17 +2,16 @@ function add(u, v) {
   return u.reduce((acc, _, i) => [...acc, u[i] + v[i]], []);
 }
 
-function toButton(position) {
-  return position[0] + 3 * position[1] + 1
+function toButton(p) {
+  return p[0] + 3 * p[1] + 1
 }
 
-function isOnKeypad(v) {
-  return v[0] >= 0 && v[0] < 3 && v[1] >= 0 && v[1] < 3;
+function isOnKeypad(p) {
+  return p[0] >= 0 && p[0] < 3 && p[1] >= 0 && p[1] < 3;
 }
 
-function move(position, movement) {
-  const newPosition = add(position, movement);
-  return isOnKeypad(newPosition) ? newPosition : position;
+function move(p, m) {
+  return isOnKeypad(add(p, m)) ? add(p, m) : p;
 }
 
 function toMovement(instruction) {
