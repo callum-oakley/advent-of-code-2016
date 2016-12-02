@@ -195,10 +195,8 @@ function toButton(position) {
   return position[0] + 3 * position[1] + 1;
 }
 
-function isOnKeypad(position) {
-  var x = position[0];
-  var y = position[1];
-  return x >= 0 && x < 3 && y >= 0 && y < 3;
+function isOnKeypad(v) {
+  return v[0] >= 0 && v[0] < 3 && v[1] >= 0 && v[1] < 3;
 }
 
 function move(position, movement) {
