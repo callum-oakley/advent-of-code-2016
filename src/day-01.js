@@ -6,8 +6,8 @@ function add(u, v) {
   return u.reduce((acc, _, i) => [...acc, u[i] + v[i]], []);
 }
 
-const North = [0, 1];
-const East = [1, 0];
+const North = [0, +1];
+const East = [+1, 0];
 const South = [0, -1];
 const West = [-1, 0];
 const Zero = [0, 0];
@@ -27,8 +27,8 @@ function turnRight(direction) {
 }
 
 function turn(turnCommand, direction) {
-  if (turnCommand == "L") { return turnLeft(direction); }
-  if (turnCommand == "R") { return turnRight(direction); }
+  if (turnCommand === "L") { return turnLeft(direction); }
+  if (turnCommand === "R") { return turnRight(direction); }
 }
 
 function step(state, command) {
