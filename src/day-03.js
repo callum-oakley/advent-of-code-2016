@@ -1,27 +1,22 @@
+function chunksOf(n, arr) {
+  var chunks = [];
+  for (let i = 0; i < arr.length; i += n) {
+    chunks.push([...arr].splice(i, i + n));
+  }
+  return chunks;
+}
+
 function isPossible(triangle) {
   const [a, b, c] = [...triangle].sort((x, y) => x - y);
   return a + b > c;
 }
 
-function rotate([
-  [a, b, c],
-  [d, e, f],
-  [g, h, i]
-]) {
-  return [
-    [a, d, g],
-    [b, e, h],
-    [c, f, i]
-  ];
+function transpose([[a, b, c], [d, e, f], [g, h, i]]) {
+  return [[a, d, g], [b, e, h], [c, f, i]];
 }
 
 function transform(input) {
-  var rotated = [];
-  for (let i = 0; i < input.length; i += 3) {
-    const block = [...input].splice(i, i + 3);
-    rotated = [...rotated, ...rotate(block)];
-  }
-  return rotated;
+  return chunksOf(3, input).map(transpose).reduce((s, t) => [...s, ...t]);
 }
 
 export function part1(input) {
