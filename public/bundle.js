@@ -293,11 +293,40 @@ function isPossible(triangle) {
   return a + b > c;
 }
 
+function rotate(_ref) {
+  var _ref2 = slicedToArray(_ref, 3),
+      _ref2$ = slicedToArray(_ref2[0], 3),
+      a = _ref2$[0],
+      b = _ref2$[1],
+      c = _ref2$[2],
+      _ref2$2 = slicedToArray(_ref2[1], 3),
+      d = _ref2$2[0],
+      e = _ref2$2[1],
+      f = _ref2$2[2],
+      _ref2$3 = slicedToArray(_ref2[2], 3),
+      g = _ref2$3[0],
+      h = _ref2$3[1],
+      i = _ref2$3[2];
+
+  return [[a, d, g], [b, e, h], [c, f, i]];
+}
+
+function transform(input) {
+  var rotated = [];
+  for (var i = 0; i < input.length; i += 3) {
+    var block = [].concat(toConsumableArray(input)).splice(i, i + 3);
+    rotated = [].concat(toConsumableArray(rotated), toConsumableArray(rotate(block)));
+  }
+  return rotated;
+}
+
 function part1$2(input) {
   return input.filter(isPossible).length;
 }
 
-function part2$2(input) {}
+function part2$2(input) {
+  return transform(input).filter(isPossible).length;
+}
 
 var input03 = [[ 810,  679,   10],
 [  783,  255,  616],
