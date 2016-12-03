@@ -38,9 +38,8 @@ function chunksOf(n, arr) {
   return chunks;
 }
 
-function isPossible(triangle) {
-  const [a, b, c] = [...triangle].sort((x, y) => x - y);
-  return a + b > c;
+function isPossible([a, b, c]) {
+  return a + b > c && a + c > b && b + c > a;
 }
 
 function transpose([[a, b, c], [d, e, f], [g, h, i]]) {

@@ -163,14 +163,15 @@ function magnitude(v) {
   });
 }
 
+// Adds two arrays elementwise.
 function add(u, v) {
   return u.reduce(function (acc, _, i) {
     return [].concat(toConsumableArray(acc), [u[i] + v[i]]);
   }, []);
 }
 
-var North = [0, +1];
-var East = [+1, 0];
+var North = [0, 1];
+var East = [1, 0];
 var South = [0, -1];
 var West = [-1, 0];
 
@@ -225,6 +226,8 @@ function step(state, command) {
     if (visited.has(position.toString()) && !firstVisitedTwice) {
       firstVisitedTwice = position;
     } else {
+      /* We keep track of visited positions as strings
+        because array equality is awkward. */
       visited.add(position.toString());
     }
   }
@@ -305,6 +308,7 @@ Using the same instructions in your puzzle input, what is the correct bathroom c
 Your puzzle answer was 57DD8.
 */
 
+// Adds two arrays elementwise.
 function add$1(u, v) {
   return u.reduce(function (acc, _, i) {
     return [].concat(toConsumableArray(acc), [u[i] + v[i]]);
@@ -312,6 +316,7 @@ function add$1(u, v) {
 }
 
 function toButton(keypad, p) {
+  // `toString(16)` so that the 10th index gives us "a", 11th gives us "b", etc.
   return (keypad.indexOf(p.toString()) + 1).toString(16);
 }
 
@@ -326,13 +331,13 @@ function toMovement(instruction) {
     return [0, -1];
   }
   if (instruction === "D") {
-    return [0, +1];
+    return [0, 1];
   }
   if (instruction === "L") {
     return [-1, 0];
   }
   if (instruction === "R") {
-    return [+1, 0];
+    return [1, 0];
   }
 }
 
@@ -347,6 +352,9 @@ function processLine(keypad) {
 }
 
 function part1$1(input) {
+  /* The keypad is defined as a list of the coordinates it contains, ordered so
+    that button n is in the (n - 1)th position. Again, we store the coordinates
+    as strings, to avoid array equality awkwardness. */
   var keypad = [[0, 0], [1, 0], [2, 0], [0, 1], [1, 1], [2, 1], [0, 2], [1, 2], [2, 2]].map(function (x) {
     return x.toString();
   });
@@ -405,32 +413,29 @@ function chunksOf(n, arr) {
   return chunks;
 }
 
-function isPossible(triangle) {
-  var _sort = [].concat(toConsumableArray(triangle)).sort(function (x, y) {
-    return x - y;
-  }),
-      _sort2 = slicedToArray(_sort, 3),
-      a = _sort2[0],
-      b = _sort2[1],
-      c = _sort2[2];
+function isPossible(_ref) {
+  var _ref2 = slicedToArray(_ref, 3),
+      a = _ref2[0],
+      b = _ref2[1],
+      c = _ref2[2];
 
-  return a + b > c;
+  return a + b > c && a + c > b && b + c > a;
 }
 
-function transpose(_ref) {
-  var _ref2 = slicedToArray(_ref, 3),
-      _ref2$ = slicedToArray(_ref2[0], 3),
-      a = _ref2$[0],
-      b = _ref2$[1],
-      c = _ref2$[2],
-      _ref2$2 = slicedToArray(_ref2[1], 3),
-      d = _ref2$2[0],
-      e = _ref2$2[1],
-      f = _ref2$2[2],
-      _ref2$3 = slicedToArray(_ref2[2], 3),
-      g = _ref2$3[0],
-      h = _ref2$3[1],
-      i = _ref2$3[2];
+function transpose(_ref3) {
+  var _ref4 = slicedToArray(_ref3, 3),
+      _ref4$ = slicedToArray(_ref4[0], 3),
+      a = _ref4$[0],
+      b = _ref4$[1],
+      c = _ref4$[2],
+      _ref4$2 = slicedToArray(_ref4[1], 3),
+      d = _ref4$2[0],
+      e = _ref4$2[1],
+      f = _ref4$2[2],
+      _ref4$3 = slicedToArray(_ref4[2], 3),
+      g = _ref4$3[0],
+      h = _ref4$3[1],
+      i = _ref4$3[2];
 
   return [[a, d, g], [b, e, h], [c, f, i]];
 }

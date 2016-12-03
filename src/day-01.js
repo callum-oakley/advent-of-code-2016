@@ -35,11 +35,12 @@ function magnitude(v) {
   return v.map(Math.abs).reduce((x, y) => x + y);
 }
 
+// Adds two arrays elementwise.
 function add(u, v) {
   return u.reduce((acc, _, i) => [...acc, u[i] + v[i]], []);
 }
 
-const North = [0, +1], East = [+1, 0], South = [0, -1], West = [-1, 0];
+const North = [0, 1], East = [1, 0], South = [0, -1], West = [-1, 0];
 
 function turnLeft(direction) {
   if (direction === North) { return West; }
@@ -72,6 +73,8 @@ function step(state, command) {
     if (visited.has(position.toString()) && !firstVisitedTwice) {
       firstVisitedTwice = position;
     } else {
+      /* We keep track of visited positions as strings
+        because array equality is awkward. */
       visited.add(position.toString());
     }
   }

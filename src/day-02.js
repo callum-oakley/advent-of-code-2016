@@ -50,11 +50,13 @@ Using the same instructions in your puzzle input, what is the correct bathroom c
 Your puzzle answer was 57DD8.
 */
 
+// Adds two arrays elementwise.
 function add(u, v) {
   return u.reduce((acc, _, i) => [...acc, u[i] + v[i]], []);
 }
 
 function toButton(keypad, p) {
+  // `toString(16)` so that the 10th index gives us "a", 11th gives us "b", etc.
   return (keypad.indexOf(p.toString()) + 1).toString(16);
 }
 
@@ -64,9 +66,9 @@ function move(keypad) {
 
 function toMovement(instruction) {
   if (instruction === "U") { return [0, -1]; }
-  if (instruction === "D") { return [0, +1]; }
+  if (instruction === "D") { return [0, 1]; }
   if (instruction === "L") { return [-1, 0]; }
-  if (instruction === "R") { return [+1, 0]; }
+  if (instruction === "R") { return [1, 0]; }
 }
 
 function processLine(keypad) {
@@ -80,6 +82,9 @@ function processLine(keypad) {
 }
 
 export function part1(input) {
+  /* The keypad is defined as a list of the coordinates it contains, ordered so
+    that button n is in the (n - 1)th position. Again, we store the coordinates
+    as strings, to avoid array equality awkwardness. */
   const keypad = [
     [0, 0], [1, 0], [2, 0],
     [0, 1], [1, 1], [2, 1],
