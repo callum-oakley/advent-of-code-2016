@@ -352,10 +352,13 @@ function processLine(keypad) {
 }
 
 function part1$1(input) {
-  /* The keypad is defined as a list of the coordinates it contains, ordered so
-    that button n is in the (n - 1)th position. Again, we store the coordinates
-    as strings, to avoid array equality awkwardness. */
-  var keypad = [[0, 0], [1, 0], [2, 0], [0, 1], [1, 1], [2, 1], [0, 2], [1, 2], [2, 2]].map(function (x) {
+  /* The keypad is defined as a list of the coordinates it contains, ordered
+    so that button n is in the (n - 1)th position. Again, we store the
+    coordinates as strings, to avoid array equality awkwardness. */
+  var keypad = [[0, 0], [1, 0], [2, 0], //    1 2 3
+  [0, 1], [1, 1], [2, 1], //    4 5 6
+  [0, 2], [1, 2], [2, 2] //    7 8 9
+  ].map(function (x) {
     return x.toString();
   });
   var initialState = { position: [1, 1], keyCode: [] };
@@ -363,7 +366,12 @@ function part1$1(input) {
 }
 
 function part2$1(input) {
-  var keypad = [[2, 0], [1, 1], [2, 1], [3, 1], [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [1, 3], [2, 3], [3, 3], [2, 4]].map(function (x) {
+  var keypad = [[2, 0], //      1
+  [1, 1], [2, 1], [3, 1], //    2 3 4
+  [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], //  5 6 7 8 9
+  [1, 3], [2, 3], [3, 3], //    A B C
+  [2, 4] //      D
+  ].map(function (x) {
     return x.toString();
   });
   var initialState = { position: [0, 2], keyCode: [] };
