@@ -36,7 +36,7 @@ function magnitude(v) {
 }
 
 // Adds two arrays elementwise.
-function add(u, v) {
+function vectorSum(u, v) {
   return u.reduce((acc, _, i) => [...acc, u[i] + v[i]], []);
 }
 
@@ -69,13 +69,13 @@ function step(state, command) {
     visited = new Set(state.visited),
     firstVisitedTwice = state.firstVisitedTwice;
   for (let i = 0; i < steps; i++) {
-    position = add(position, direction);
-    if (visited.has(position.toString()) && !firstVisitedTwice) {
+    position = vectorSum(position, direction);
+    if (visited.has(JSON.stringify(position)) && !firstVisitedTwice) {
       firstVisitedTwice = position;
     } else {
       /* We keep track of visited positions as strings
         because array equality is awkward. */
-      visited.add(position.toString());
+      visited.add(JSON.stringify(position));
     }
   }
   return {
@@ -89,7 +89,7 @@ function step(state, command) {
 const initialState = {
   position: [0, 0],
   direction: North,
-  visited: new Set([[0, 0].toString()])
+  visited: new Set([JSON.stringify([0, 0])])
 }
 
 export function part1(input) {

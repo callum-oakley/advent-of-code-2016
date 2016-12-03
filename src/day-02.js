@@ -50,18 +50,18 @@ Using the same instructions in your puzzle input, what is the correct bathroom c
 Your puzzle answer was 57DD8.
 */
 
-// Adds two arrays elementwise.
-function add(u, v) {
+function vectorSum(u, v) {
   return u.reduce((acc, _, i) => [...acc, u[i] + v[i]], []);
 }
 
 function toButton(keypad, p) {
-  // `toString(16)` so that the 10th index gives us "a", 11th gives us "b", etc.
-  return (keypad.indexOf(p.toString()) + 1).toString(16);
+  // `toString(36)` so that the 10th index gives us "a", 11th gives us "b", etc.
+  return (keypad.indexOf(JSON.stringify(p)) + 1).toString(36);
 }
 
 function move(keypad) {
-  return (p, m) => keypad.includes(add(p, m).toString()) ? add(p, m) : p;
+  return (p, m) =>
+    keypad.includes(JSON.stringify(vectorSum(p, m))) ? vectorSum(p, m) : p;
 }
 
 function toMovement(instruction) {
@@ -76,7 +76,7 @@ function processLine(keypad) {
     const p = line.split("").map(toMovement).reduce(move(keypad), acc.position);
     return {
       position: p,
-      keyCode: acc.keyCode + toButton(keypad, p).toString()
+      keyCode: acc.keyCode + toButton(keypad, p)
     };
   }
 }
@@ -89,7 +89,7 @@ export function part1(input) {
             [0, 0], [1, 0], [2, 0],          //    1 2 3
             [0, 1], [1, 1], [2, 1],          //    4 5 6
             [0, 2], [1, 2], [2, 2]           //    7 8 9
-  ].map(x => x.toString());
+  ].map(JSON.stringify);
   const initialState = { position: [1, 1], keyCode: [] };
   return input.reduce(processLine(keypad), initialState).keyCode;
 }
@@ -101,7 +101,7 @@ export function part2(input) {
     [0, 2], [1, 2], [2, 2], [3, 2], [4, 2],  //  5 6 7 8 9
             [1, 3], [2, 3], [3, 3],          //    A B C
                     [2, 4]                   //      D
-  ].map(x => x.toString());
+  ].map(JSON.stringify);
   const initialState = { position: [0, 2], keyCode: [] };
   return input.reduce(processLine(keypad), initialState).keyCode;
 }

@@ -164,7 +164,7 @@ function magnitude(v) {
 }
 
 // Adds two arrays elementwise.
-function add(u, v) {
+function vectorSum(u, v) {
   return u.reduce(function (acc, _, i) {
     return [].concat(toConsumableArray(acc), [u[i] + v[i]]);
   }, []);
@@ -222,13 +222,13 @@ function step(state, command) {
       visited = new Set(state.visited),
       firstVisitedTwice = state.firstVisitedTwice;
   for (var i = 0; i < steps; i++) {
-    position = add(position, direction);
-    if (visited.has(position.toString()) && !firstVisitedTwice) {
+    position = vectorSum(position, direction);
+    if (visited.has(JSON.stringify(position)) && !firstVisitedTwice) {
       firstVisitedTwice = position;
     } else {
       /* We keep track of visited positions as strings
         because array equality is awkward. */
-      visited.add(position.toString());
+      visited.add(JSON.stringify(position));
     }
   }
   return {
@@ -242,7 +242,7 @@ function step(state, command) {
 var initialState = {
   position: [0, 0],
   direction: North,
-  visited: new Set([[0, 0].toString()])
+  visited: new Set([JSON.stringify([0, 0])])
 };
 
 function part1(input) {
@@ -308,21 +308,20 @@ Using the same instructions in your puzzle input, what is the correct bathroom c
 Your puzzle answer was 57DD8.
 */
 
-// Adds two arrays elementwise.
-function add$1(u, v) {
+function vectorSum$1(u, v) {
   return u.reduce(function (acc, _, i) {
     return [].concat(toConsumableArray(acc), [u[i] + v[i]]);
   }, []);
 }
 
 function toButton(keypad, p) {
-  // `toString(16)` so that the 10th index gives us "a", 11th gives us "b", etc.
-  return (keypad.indexOf(p.toString()) + 1).toString(16);
+  // `toString(36)` so that the 10th index gives us "a", 11th gives us "b", etc.
+  return (keypad.indexOf(JSON.stringify(p)) + 1).toString(36);
 }
 
 function move(keypad) {
   return function (p, m) {
-    return keypad.includes(add$1(p, m).toString()) ? add$1(p, m) : p;
+    return keypad.includes(JSON.stringify(vectorSum$1(p, m))) ? vectorSum$1(p, m) : p;
   };
 }
 
@@ -346,7 +345,7 @@ function processLine(keypad) {
     var p = line.split("").map(toMovement).reduce(move(keypad), acc.position);
     return {
       position: p,
-      keyCode: acc.keyCode + toButton(keypad, p).toString()
+      keyCode: acc.keyCode + toButton(keypad, p)
     };
   };
 }
@@ -358,9 +357,7 @@ function part1$1(input) {
   var keypad = [[0, 0], [1, 0], [2, 0], //    1 2 3
   [0, 1], [1, 1], [2, 1], //    4 5 6
   [0, 2], [1, 2], [2, 2] //    7 8 9
-  ].map(function (x) {
-    return x.toString();
-  });
+  ].map(JSON.stringify);
   var initialState = { position: [1, 1], keyCode: [] };
   return input.reduce(processLine(keypad), initialState).keyCode;
 }
@@ -371,9 +368,7 @@ function part2$1(input) {
   [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], //  5 6 7 8 9
   [1, 3], [2, 3], [3, 3], //    A B C
   [2, 4] //      D
-  ].map(function (x) {
-    return x.toString();
-  });
+  ].map(JSON.stringify);
   var initialState = { position: [0, 2], keyCode: [] };
   return input.reduce(processLine(keypad), initialState).keyCode;
 }
