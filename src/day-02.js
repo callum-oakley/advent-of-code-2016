@@ -86,9 +86,9 @@ export function part1(input) {
     so that button n is in the (n - 1)th position. Again, we store the
     coordinates as strings, to avoid array equality awkwardness. */
   const keypad = [
-            [0, 0], [1, 0], [2, 0],          //    1 2 3
-            [0, 1], [1, 1], [2, 1],          //    4 5 6
-            [0, 2], [1, 2], [2, 2]           //    7 8 9
+            [0, 0], [1, 0], [2, 0],          //     1  2  3
+            [0, 1], [1, 1], [2, 1],          //     4  5  6
+            [0, 2], [1, 2], [2, 2]           //     7  8  9
   ].map(JSON.stringify);
   const initialState = { position: [1, 1], keyCode: [] };
   return input.reduce(processLine(keypad), initialState).keyCode;
@@ -96,11 +96,11 @@ export function part1(input) {
 
 export function part2(input) {
   const keypad = [
-                    [2, 0],                  //      1
-            [1, 1], [2, 1], [3, 1],          //    2 3 4
-    [0, 2], [1, 2], [2, 2], [3, 2], [4, 2],  //  5 6 7 8 9
-            [1, 3], [2, 3], [3, 3],          //    A B C
-                    [2, 4]                   //      D
+                    [2, 0],                  //        1
+            [1, 1], [2, 1], [3, 1],          //     2  3  4
+    [0, 2], [1, 2], [2, 2], [3, 2], [4, 2],  //  5  6  7  8  9
+            [1, 3], [2, 3], [3, 3],          //     A  B  C
+                    [2, 4]                   //        D
   ].map(JSON.stringify);
   const initialState = { position: [0, 2], keyCode: [] };
   return input.reduce(processLine(keypad), initialState).keyCode;

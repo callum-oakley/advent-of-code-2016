@@ -35,7 +35,6 @@ function magnitude(v) {
   return v.map(Math.abs).reduce((x, y) => x + y);
 }
 
-// Adds two arrays elementwise.
 function vectorSum(u, v) {
   return u.reduce((acc, _, i) => [...acc, u[i] + v[i]], []);
 }
