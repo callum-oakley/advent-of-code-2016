@@ -1,5 +1,5 @@
 // `group([0, 1, 1, 0, 0, 0, 3])` returns `[[0], [1, 1], [0, 0, 0], [3]]`
-function group (arr) {
+function group(arr) {
   var groups = [], i = 0;
   while (i < arr.length) {
     var group = [];
