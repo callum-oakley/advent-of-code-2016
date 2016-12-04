@@ -72,8 +72,8 @@ function step(state, command) {
     if (visited.has(JSON.stringify(position)) && !firstVisitedTwice) {
       firstVisitedTwice = position;
     } else {
-      /* We keep track of visited positions as strings
-        because array equality is awkward. */
+      /* We keep track of visited positions as strings because array equality
+        is awkward. */
       visited.add(JSON.stringify(position));
     }
   }

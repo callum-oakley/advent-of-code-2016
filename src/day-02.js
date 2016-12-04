@@ -82,9 +82,9 @@ function processLine(keypad) {
 }
 
 export function part1(input) {
-  /* The keypad is defined as a list of the coordinates it contains, ordered
-    so that button n is in the (n - 1)th position. Again, we store the
-    coordinates as strings, to avoid array equality awkwardness. */
+  /* The keypad is defined as a list of the coordinates it contains, ordered so
+    that button n is in the (n - 1)th position. Again, we store the coordinates
+    as strings, to avoid array equality awkwardness. */
   const keypad = [
             [0, 0], [1, 0], [2, 0],          //     1  2  3
             [0, 1], [1, 1], [2, 1],          //     4  5  6
