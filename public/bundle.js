@@ -2059,7 +2059,7 @@ var input03 = [
 ]
 ;
 
-// `group([0, 1, 1, 0, 0, 0, 3])` returns `[[0], [1, 1], [0, 0, 0], [3]]`
+// `group([0, 1, 1, 1, 0, 0, 3])` returns `[[0], [1, 1, 1], [0, 0], [3]]`
 function group(arr) {
   var groups = [],
       i = 0;
