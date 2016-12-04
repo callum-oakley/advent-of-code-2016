@@ -2172,13 +2172,12 @@ function decrypt(iterations, code) {
   }, "");
 }
 
-// Sort groups by length first, and then alphabetically.
+// Facilitates sorting groups by length first, and then alphabetically.
 function compareGroups(x, y) {
   if (y.length - x.length) {
     return y.length - x.length;
-  } else {
-    return x[0] > y[0] ? 1 : -1;
   }
+  return x[0] > y[0] ? 1 : -1;
 }
 
 function checksum(name) {
