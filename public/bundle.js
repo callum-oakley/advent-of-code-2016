@@ -127,30 +127,45 @@ var toConsumableArray = function (arr) {
 /*
 --- Day 1: No Time for a Taxicab ---
 
-Santa's sleigh uses a very high-precision clock to guide its movements, and the clock's oscillator is regulated by stars. Unfortunately, the stars have been stolen... by the Easter Bunny. To save Christmas, Santa needs you to retrieve all fifty stars by December 25th.
+Santa's sleigh uses a very high-precision clock to guide its movements, and the
+clock's oscillator is regulated by stars. Unfortunately, the stars have been
+stolen... by the Easter Bunny. To save Christmas, Santa needs you to retrieve
+all fifty stars by December 25th.
 
-Collect stars by solving puzzles. Two puzzles will be made available on each day in the advent calendar; the second puzzle is unlocked when you complete the first. Each puzzle grants one star. Good luck!
+Collect stars by solving puzzles. Two puzzles will be made available on each day
+in the advent calendar; the second puzzle is unlocked when you complete the
+first. Each puzzle grants one star. Good luck!
 
-You're airdropped near Easter Bunny Headquarters in a city somewhere. "Near", unfortunately, is as close as you can get - the instructions on the Easter Bunny Recruiting Document the Elves intercepted start here, and nobody had time to work them out further.
+You're airdropped near Easter Bunny Headquarters in a city somewhere. "Near",
+unfortunately, is as close as you can get - the instructions on the Easter Bunny
+Recruiting Document the Elves intercepted start here, and nobody had time to
+work them out further.
 
-The Document indicates that you should start at the given coordinates (where you just landed) and face North. Then, follow the provided sequence: either turn left (L) or right (R) 90 degrees, then walk forward the given number of blocks, ending at a new intersection.
+The Document indicates that you should start at the given coordinates (where you
+just landed) and face North. Then, follow the provided sequence: either turn
+left (L) or right (R) 90 degrees, then walk forward the given number of blocks,
+ending at a new intersection.
 
-There's no time to follow such ridiculous instructions on foot, though, so you take a moment and work out the destination. Given that you can only walk on the street grid of the city, how far is the shortest path to the destination?
+There's no time to follow such ridiculous instructions on foot, though, so you
+take a moment and work out the destination. Given that you can only walk on the
+street grid of the city, how far is the shortest path to the destination?
 
 For example:
 
 Following R2, L3 leaves you 2 blocks East and 3 blocks North, or 5 blocks away.
-R2, R2, R2 leaves you 2 blocks due South of your starting position, which is 2 blocks away.
-R5, L5, R5, R3 leaves you 12 blocks away.
-How many blocks away is Easter Bunny HQ?
+R2, R2, R2 leaves you 2 blocks due South of your starting position, which is 2
+blocks away. R5, L5, R5, R3 leaves you 12 blocks away. How many blocks away is
+Easter Bunny HQ?
 
 Your puzzle answer was 252.
 
 --- Part Two ---
 
-Then, you notice the instructions continue on the back of the Recruiting Document. Easter Bunny HQ is actually at the first location you visit twice.
+Then, you notice the instructions continue on the back of the Recruiting
+Document. Easter Bunny HQ is actually at the first location you visit twice.
 
-For example, if your instructions are R8, R4, R4, R8, the first location you visit twice is 4 blocks away, due East.
+For example, if your instructions are R8, R4, R4, R8, the first location you
+visit twice is 4 blocks away, due East.
 
 How many blocks away is the first location you visit twice?
 
@@ -258,51 +273,60 @@ var input01 = ["L3", "R1", "L4", "L1", "L2", "R4", "L3", "L3", "R2", "R3", "L5",
 /*
 --- Day 2: Bathroom Security ---
 
-You arrive at Easter Bunny Headquarters under cover of darkness. However, you left in such a rush that you forgot to use the bathroom! Fancy office buildings like this one usually have keypad locks on their bathrooms, so you search the front desk for the code.
+You arrive at Easter Bunny Headquarters under cover of darkness. However, you
+left in such a rush that you forgot to use the bathroom! Fancy office buildings
+like this one usually have keypad locks on their bathrooms, so you search the
+front desk for the code.
 
-"In order to improve security," the document you find says, "bathroom codes will no longer be written down. Instead, please memorize and follow the procedure below to access the bathrooms."
+"In order to improve security," the document you find says, "bathroom codes will
+no longer be written down. Instead, please memorize and follow the procedure
+below to access the bathrooms."
 
-The document goes on to explain that each button to be pressed can be found by starting on the previous button and moving to adjacent buttons on the keypad: U moves up, D moves down, L moves left, and R moves right. Each line of instructions corresponds to one button, starting at the previous button (or, for the first line, the "5" button); press whatever button you're on at the end of each line. If a move doesn't lead to a button, ignore it.
+The document goes on to explain that each button to be pressed can be found by
+starting on the previous button and moving to adjacent buttons on the keypad: U
+moves up, D moves down, L moves left, and R moves right. Each line of
+instructions corresponds to one button, starting at the previous button (or, for
+the first line, the "5" button); press whatever button you're on at the end of
+each line. If a move doesn't lead to a button, ignore it.
 
-You can't hold it much longer, so you decide to figure out the code as you walk to the bathroom. You picture a keypad like this:
+You can't hold it much longer, so you decide to figure out the code as you walk
+to the bathroom. You picture a keypad like this:
 
-1 2 3
-4 5 6
-7 8 9
-Suppose your instructions are:
+1 2 3 4 5 6 7 8 9 Suppose your instructions are:
 
-ULL
-RRDDD
-LURDL
-UUUUD
-You start at "5" and move up (to "2"), left (to "1"), and left (you can't, and stay on "1"), so the first button is 1.
-Starting from the previous button ("1"), you move right twice (to "3") and then down three times (stopping at "9" after two moves and ignoring the third), ending up with 9.
+ULL RRDDD LURDL UUUUD You start at "5" and move up (to "2"), left (to "1"), and
+left (you can't, and stay on "1"), so the first button is 1. Starting from the
+previous button ("1"), you move right twice (to "3") and then down three times
+(stopping at "9" after two moves and ignoring the third), ending up with 9.
 Continuing from "9", you move left, up, right, down, and left, ending with 8.
-Finally, you move up four times (stopping at "2"), then down once, ending with 5.
-So, in this example, the bathroom code is 1985.
+Finally, you move up four times (stopping at "2"), then down once, ending with
+5. So, in this example, the bathroom code is 1985.
 
-Your puzzle input is the instructions from the document you found at the front desk. What is the bathroom code?
+Your puzzle input is the instructions from the document you found at the front
+desk. What is the bathroom code?
 
 Your puzzle answer was 78985.
 
 --- Part Two ---
 
-You finally arrive at the bathroom (it's a several minute walk from the lobby so visitors can behold the many fancy conference rooms and water coolers on this floor) and go to punch in the code. Much to your bladder's dismay, the keypad is not at all like you imagined it. Instead, you are confronted with the result of hundreds of man-hours of bathroom-keypad-design meetings:
+You finally arrive at the bathroom (it's a several minute walk from the lobby so
+visitors can behold the many fancy conference rooms and water coolers on this
+floor) and go to punch in the code. Much to your bladder's dismay, the keypad is
+not at all like you imagined it. Instead, you are confronted with the result of
+hundreds of man-hours of bathroom-keypad-design meetings:
 
-    1
-  2 3 4
-5 6 7 8 9
-  A B C
-    D
-You still start at "5" and stop when you're at an edge, but given the same instructions as above, the outcome is very different:
+    1 2 3 4 5 6 7 8 9 A B C D You still start at "5" and stop when you're at an
+    edge, but given the same instructions as above, the outcome is very
+    different:
 
-You start at "5" and don't move at all (up and left are both edges), ending at 5.
-Continuing from "5", you move right twice and down three times (through "6", "7", "B", "D", "D"), ending at D.
-Then, from "D", you move five more times (through "D", "B", "C", "C", "B"), ending at B.
-Finally, after five more moves, you end at 3.
-So, given the actual keypad layout, the code would be 5DB3.
+You start at "5" and don't move at all (up and left are both edges), ending at
+5. Continuing from "5", you move right twice and down three times (through "6",
+"7", "B", "D", "D"), ending at D. Then, from "D", you move five more times
+(through "D", "B", "C", "C", "B"), ending at B. Finally, after five more moves,
+you end at 3. So, given the actual keypad layout, the code would be 5DB3.
 
-Using the same instructions in your puzzle input, what is the correct bathroom code?
+Using the same instructions in your puzzle input, what is the correct bathroom
+code?
 
 Your puzzle answer was 57DD8.
 */
@@ -378,13 +402,20 @@ var input02 = ["UULDRRRDDLRLURUUURUURDRUURRDRRURUDRURRDLLDRRRDLRUDULLRDURLULRUUU
 /*
 --- Day 3: Squares With Three Sides ---
 
-Now that you can think clearly, you move deeper into the labyrinth of hallways and office furniture that makes up this part of Easter Bunny HQ. This must be a graphic design department; the walls are covered in specifications for triangles.
+Now that you can think clearly, you move deeper into the labyrinth of hallways
+and office furniture that makes up this part of Easter Bunny HQ. This must be a
+graphic design department; the walls are covered in specifications for
+triangles.
 
 Or are they?
 
-The design document gives the side lengths of each triangle it describes, but... 5 10 25? Some of these aren't triangles. You can't help but mark the impossible ones.
+The design document gives the side lengths of each triangle it describes, but...
+5 10 25? Some of these aren't triangles. You can't help but mark the impossible
+ones.
 
-In a valid triangle, the sum of any two sides must be larger than the remaining side. For example, the "triangle" given above is impossible, because 5 + 10 is not larger than 25.
+In a valid triangle, the sum of any two sides must be larger than the remaining
+side. For example, the "triangle" given above is impossible, because 5 + 10 is
+not larger than 25.
 
 In your puzzle input, how many of the listed triangles are possible?
 
@@ -392,17 +423,16 @@ Your puzzle answer was 869.
 
 --- Part Two ---
 
-Now that you've helpfully marked up their design documents, it occurs to you that triangles are specified in groups of three vertically. Each set of three numbers in a column specifies a triangle. Rows are unrelated.
+Now that you've helpfully marked up their design documents, it occurs to you
+that triangles are specified in groups of three vertically. Each set of three
+numbers in a column specifies a triangle. Rows are unrelated.
 
-For example, given the following specification, numbers with the same hundreds digit would be part of the same triangle:
+For example, given the following specification, numbers with the same hundreds
+digit would be part of the same triangle:
 
-101 301 501
-102 302 502
-103 303 503
-201 401 601
-202 402 602
-203 403 603
-In your puzzle input, and instead reading by columns, how many of the listed triangles are possible?
+101 301 501 102 302 502 103 303 503 201 401 601 202 402 602 203 403 603 In your
+puzzle input, and instead reading by columns, how many of the listed triangles
+are possible?
 
 Your puzzle answer was 1544.
 */
@@ -2062,16 +2092,21 @@ var input03 = [
 /*
 --- Day 4: Security Through Obscurity ---
 
-Finally, you come across an information kiosk with a list of rooms. Of course, the list is encrypted and full of decoy data, but the instructions to decode the list are barely hidden nearby. Better remove the decoy data first.
+Finally, you come across an information kiosk with a list of rooms. Of course,
+the list is encrypted and full of decoy data, but the instructions to decode the
+list are barely hidden nearby. Better remove the decoy data first.
 
-Each room consists of an encrypted name (lowercase letters separated by dashes) followed by a dash, a sector ID, and a checksum in square brackets.
+Each room consists of an encrypted name (lowercase letters separated by dashes)
+followed by a dash, a sector ID, and a checksum in square brackets.
 
-A room is real (not a decoy) if the checksum is the five most common letters in the encrypted name, in order, with ties broken by alphabetization. For example:
+A room is real (not a decoy) if the checksum is the five most common letters in
+the encrypted name, in order, with ties broken by alphabetization. For example:
 
-aaaaa-bbb-z-y-x-123[abxyz] is a real room because the most common letters are a (5), b (3), and then a tie between x, y, and z, which are listed alphabetically.
-a-b-c-d-e-f-g-h-987[abcde] is a real room because although the letters are all tied (1 of each), the first five are listed alphabetically.
-not-a-real-room-404[oarel] is a real room.
-totally-real-room-200[decoy] is not.
+aaaaa-bbb-z-y-x-123[abxyz] is a real room because the most common letters are a
+(5), b (3), and then a tie between x, y, and z, which are listed alphabetically.
+a-b-c-d-e-f-g-h-987[abcde] is a real room because although the letters are all
+tied (1 of each), the first five are listed alphabetically.
+not-a-real-room-404[oarel] is a real room. totally-real-room-200[decoy] is not.
 Of the real rooms from the list above, the sum of their sector IDs is 1514.
 
 What is the sum of the sector IDs of the real rooms?
@@ -2080,18 +2115,23 @@ Your puzzle answer was 173787.
 
 --- Part Two ---
 
-With all the decoy data out of the way, it's time to decrypt this list and get moving.
+With all the decoy data out of the way, it's time to decrypt this list and get
+moving.
 
-The room names are encrypted by a state-of-the-art shift cipher, which is nearly unbreakable without the right software. However, the information kiosk designers at Easter Bunny HQ were not expecting to deal with a master cryptographer like yourself.
+The room names are encrypted by a state-of-the-art shift cipher, which is nearly
+unbreakable without the right software. However, the information kiosk designers
+at Easter Bunny HQ were not expecting to deal with a master cryptographer like
+yourself.
 
-To decrypt a room name, rotate each letter forward through the alphabet a number of times equal to the room's sector ID. A becomes B, B becomes C, Z becomes A, and so on. Dashes become spaces.
+To decrypt a room name, rotate each letter forward through the alphabet a number
+of times equal to the room's sector ID. A becomes B, B becomes C, Z becomes A,
+and so on. Dashes become spaces.
 
 For example, the real name for qzmt-zixmtkozy-ivhz-343 is very encrypted name.
 
 What is the sector ID of the room where North Pole objects are stored?
 
-Your puzzle answer was 548.
-*/
+Your puzzle answer was 548. */
 
 /* Takes an array and returns an array of arrays, where adjacent equal elements
   are grouped together. For example, `group([0, 1, 1, 1, 0, 0])` returns `[[0],
@@ -2132,7 +2172,7 @@ function decrypt(iterations, code) {
   }, "");
 }
 
-// sort groups by length first, and then alphabetically
+// Sort groups by length first, and then alphabetically.
 function compareGroups(x, y) {
   if (y.length - x.length) {
     return y.length - x.length;
