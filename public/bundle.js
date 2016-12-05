@@ -7274,10 +7274,9 @@ function part2$4(input) {
   var generator = new InterestingHashGenerator(input);
   var password = ["-", "-", "-", "-", "-", "-", "-", "-"];
   while (password.includes("-")) {
-    var hash = generator.next(),
-        i = parseInt(hash[5]);
-    if (i < 8 && password[i] === "-") {
-      password[i] = hash[6];
+    var hash = generator.next();
+    if (password[hash[5]] === "-") {
+      password[hash[5]] = hash[6];
       console.log(password.reduce(function (x, y) {
         return x + y;
       }));
