@@ -1,6 +1,36 @@
 (function () {
 'use strict';
 
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+
+
+
+
+
+
 var get = function get(object, property, receiver) {
   if (object === null) object = Function.prototype;
   var desc = Object.getOwnPropertyDescriptor(object, property);
@@ -6949,13 +6979,342 @@ var input04 = [
 ]
 ;
 
-console.log("day 01 - part 1: " + part1(input01));
-console.log("       - part 2: " + part2(input01));
-console.log("day 02 - part 1: " + part1$1(input02));
-console.log("       - part 2: " + part2$1(input02));
-console.log("day 03 - part 1: " + part1$2(input03));
-console.log("       - part 2: " + part2$2(input03));
-console.log("day 04 - part 1: " + part1$3(input04));
-console.log("       - part 2: " + part2$3(input04));
+/*!
+ * md5-es
+ * https://github.com/logotype/md5-es.git
+ *
+ * Copyright 2016 Victor Norgren
+ * Released under the MIT license
+ */
+var MD5 = function () {
+    function MD5() {
+        classCallCheck(this, MD5);
+    }
+
+    createClass(MD5, null, [{
+        key: 'hash',
+        value: function hash(string) {
+            return MD5.hex(MD5.md51(string));
+        }
+    }, {
+        key: 'md5cycle',
+        value: function md5cycle(x, k) {
+            var a = x[0],
+                b = x[1],
+                c = x[2],
+                d = x[3];
+
+            a = MD5.ff(a, b, c, d, k[0], 7, -680876936);
+            d = MD5.ff(d, a, b, c, k[1], 12, -389564586);
+            c = MD5.ff(c, d, a, b, k[2], 17, 606105819);
+            b = MD5.ff(b, c, d, a, k[3], 22, -1044525330);
+            a = MD5.ff(a, b, c, d, k[4], 7, -176418897);
+            d = MD5.ff(d, a, b, c, k[5], 12, 1200080426);
+            c = MD5.ff(c, d, a, b, k[6], 17, -1473231341);
+            b = MD5.ff(b, c, d, a, k[7], 22, -45705983);
+            a = MD5.ff(a, b, c, d, k[8], 7, 1770035416);
+            d = MD5.ff(d, a, b, c, k[9], 12, -1958414417);
+            c = MD5.ff(c, d, a, b, k[10], 17, -42063);
+            b = MD5.ff(b, c, d, a, k[11], 22, -1990404162);
+            a = MD5.ff(a, b, c, d, k[12], 7, 1804603682);
+            d = MD5.ff(d, a, b, c, k[13], 12, -40341101);
+            c = MD5.ff(c, d, a, b, k[14], 17, -1502002290);
+            b = MD5.ff(b, c, d, a, k[15], 22, 1236535329);
+
+            a = MD5.gg(a, b, c, d, k[1], 5, -165796510);
+            d = MD5.gg(d, a, b, c, k[6], 9, -1069501632);
+            c = MD5.gg(c, d, a, b, k[11], 14, 643717713);
+            b = MD5.gg(b, c, d, a, k[0], 20, -373897302);
+            a = MD5.gg(a, b, c, d, k[5], 5, -701558691);
+            d = MD5.gg(d, a, b, c, k[10], 9, 38016083);
+            c = MD5.gg(c, d, a, b, k[15], 14, -660478335);
+            b = MD5.gg(b, c, d, a, k[4], 20, -405537848);
+            a = MD5.gg(a, b, c, d, k[9], 5, 568446438);
+            d = MD5.gg(d, a, b, c, k[14], 9, -1019803690);
+            c = MD5.gg(c, d, a, b, k[3], 14, -187363961);
+            b = MD5.gg(b, c, d, a, k[8], 20, 1163531501);
+            a = MD5.gg(a, b, c, d, k[13], 5, -1444681467);
+            d = MD5.gg(d, a, b, c, k[2], 9, -51403784);
+            c = MD5.gg(c, d, a, b, k[7], 14, 1735328473);
+            b = MD5.gg(b, c, d, a, k[12], 20, -1926607734);
+
+            a = MD5.hh(a, b, c, d, k[5], 4, -378558);
+            d = MD5.hh(d, a, b, c, k[8], 11, -2022574463);
+            c = MD5.hh(c, d, a, b, k[11], 16, 1839030562);
+            b = MD5.hh(b, c, d, a, k[14], 23, -35309556);
+            a = MD5.hh(a, b, c, d, k[1], 4, -1530992060);
+            d = MD5.hh(d, a, b, c, k[4], 11, 1272893353);
+            c = MD5.hh(c, d, a, b, k[7], 16, -155497632);
+            b = MD5.hh(b, c, d, a, k[10], 23, -1094730640);
+            a = MD5.hh(a, b, c, d, k[13], 4, 681279174);
+            d = MD5.hh(d, a, b, c, k[0], 11, -358537222);
+            c = MD5.hh(c, d, a, b, k[3], 16, -722521979);
+            b = MD5.hh(b, c, d, a, k[6], 23, 76029189);
+            a = MD5.hh(a, b, c, d, k[9], 4, -640364487);
+            d = MD5.hh(d, a, b, c, k[12], 11, -421815835);
+            c = MD5.hh(c, d, a, b, k[15], 16, 530742520);
+            b = MD5.hh(b, c, d, a, k[2], 23, -995338651);
+
+            a = MD5.ii(a, b, c, d, k[0], 6, -198630844);
+            d = MD5.ii(d, a, b, c, k[7], 10, 1126891415);
+            c = MD5.ii(c, d, a, b, k[14], 15, -1416354905);
+            b = MD5.ii(b, c, d, a, k[5], 21, -57434055);
+            a = MD5.ii(a, b, c, d, k[12], 6, 1700485571);
+            d = MD5.ii(d, a, b, c, k[3], 10, -1894986606);
+            c = MD5.ii(c, d, a, b, k[10], 15, -1051523);
+            b = MD5.ii(b, c, d, a, k[1], 21, -2054922799);
+            a = MD5.ii(a, b, c, d, k[8], 6, 1873313359);
+            d = MD5.ii(d, a, b, c, k[15], 10, -30611744);
+            c = MD5.ii(c, d, a, b, k[6], 15, -1560198380);
+            b = MD5.ii(b, c, d, a, k[13], 21, 1309151649);
+            a = MD5.ii(a, b, c, d, k[4], 6, -145523070);
+            d = MD5.ii(d, a, b, c, k[11], 10, -1120210379);
+            c = MD5.ii(c, d, a, b, k[2], 15, 718787259);
+            b = MD5.ii(b, c, d, a, k[9], 21, -343485551);
+
+            x[0] = MD5.add32(a, x[0]);
+            x[1] = MD5.add32(b, x[1]);
+            x[2] = MD5.add32(c, x[2]);
+            x[3] = MD5.add32(d, x[3]);
+        }
+    }, {
+        key: 'cmn',
+        value: function cmn(q, a, b, x, s, t) {
+            a = MD5.add32(MD5.add32(a, q), MD5.add32(x, t));
+            return MD5.add32(a << s | a >>> 32 - s, b);
+        }
+    }, {
+        key: 'ff',
+        value: function ff(a, b, c, d, x, s, t) {
+            return MD5.cmn(b & c | ~b & d, a, b, x, s, t);
+        }
+    }, {
+        key: 'gg',
+        value: function gg(a, b, c, d, x, s, t) {
+            return MD5.cmn(b & d | c & ~d, a, b, x, s, t);
+        }
+    }, {
+        key: 'hh',
+        value: function hh(a, b, c, d, x, s, t) {
+            return MD5.cmn(b ^ c ^ d, a, b, x, s, t);
+        }
+    }, {
+        key: 'ii',
+        value: function ii(a, b, c, d, x, s, t) {
+            return MD5.cmn(c ^ (b | ~d), a, b, x, s, t);
+        }
+    }, {
+        key: 'add32',
+        value: function add32(a, b) {
+            return a + b & 0xFFFFFFFF;
+        }
+    }, {
+        key: 'md51',
+        value: function md51(s) {
+            var n = s.length;
+            var state = [1732584193, -271733879, -1732584194, 271733878];
+            var tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+            var o = 0,
+                i = 64;
+
+            for (i; i <= n; i += 64) {
+                MD5.md5cycle(state, MD5.md5blk(s.substring(i - 64, i)));
+            }
+            s = s.substring(i - 64);
+            i = 0;
+            o = s.length;
+            for (i; i < o; i++) {
+                tail[i >> 2] |= s.charCodeAt(i) << (i % 4 << 3);
+            }
+            tail[i >> 2] |= 0x80 << (i % 4 << 3);
+            if (i > 55) {
+                MD5.md5cycle(state, tail);
+                for (i = 0; i < 16; i++) {
+                    tail[i] = 0;
+                }
+            }
+            tail[14] = n * 8;
+            MD5.md5cycle(state, tail);
+            return state;
+        }
+    }, {
+        key: 'md5blk',
+        value: function md5blk(s) {
+            var md5blks = [];
+            var i = 0;
+
+            for (i; i < 64; i += 4) {
+                md5blks[i >> 2] = s.charCodeAt(i) + (s.charCodeAt(i + 1) << 8) + (s.charCodeAt(i + 2) << 16) + (s.charCodeAt(i + 3) << 24);
+            }
+            return md5blks;
+        }
+    }, {
+        key: 'rhex',
+        value: function rhex(n) {
+            var hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+            var s = '',
+                j = 0;
+
+            for (j; j < 4; j++) {
+                s += hex[n >> j * 8 + 4 & 0x0F] + hex[n >> j * 8 & 0x0F];
+            }
+            return s;
+        }
+    }, {
+        key: 'hex',
+        value: function hex(x) {
+            var length = x.length;
+            var i = 0;
+
+            for (i; i < length; i++) {
+                x[i] = MD5.rhex(x[i]);
+            }
+            return x.join('');
+        }
+    }]);
+    return MD5;
+}();
+
+/*
+--- Day 5: How About a Nice Game of Chess? ---
+
+You are faced with a security door designed by Easter Bunny engineers that seem
+to have acquired most of their security knowledge by watching hacking movies.
+
+The eight-character password for the door is generated one character at a time
+by finding the MD5 hash of some Door ID (your puzzle input) and an increasing
+integer index (starting with 0).
+
+A hash indicates the next character in the password if its hexadecimal
+representation starts with five zeroes. If it does, the sixth character in the
+hash is the next character of the password.
+
+For example, if the Door ID is abc:
+
+The first index which produces a hash that starts with five zeroes is 3231929,
+which we find by hashing abc3231929; the sixth character of the hash, and thus
+the first character of the password, is 1. 5017308 produces the next interesting
+hash, which starts with 000008f82..., so the second character of the password is
+8. The third time a hash starts with five zeroes is for abc5278568, discovering
+the character f. In this example, after continuing this search a total of eight
+times, the password is 18f47a30.
+
+Given the actual Door ID, what is the password?
+
+Your puzzle answer was f77a0e6e.
+
+--- Part Two ---
+
+As the door slides open, you are presented with a second door that uses a
+slightly more inspired security mechanism. Clearly unimpressed by the last
+version (in what movie is the password decrypted in order?!), the Easter Bunny
+engineers have worked out a better solution.
+
+Instead of simply filling in the password from left to right, the hash now also
+indicates the position within the password to fill. You still look for hashes
+that begin with five zeroes; however, now, the sixth character represents the
+position (0-7), and the seventh character is the character to put in that
+position.
+
+A hash result of 000001f means that f is the second character in the password.
+Use only the first result for each position, and ignore invalid positions.
+
+For example, if the Door ID is abc:
+
+The first interesting hash is from abc3231929, which produces 0000015...; so, 5
+goes in position 1: _5______. In the previous method, 5017308 produced an
+interesting hash; however, it is ignored, because it specifies an invalid
+position (8). The second interesting hash is at index 5357525, which produces
+000004e...; so, e goes in position 4: _5__e___. You almost choke on your popcorn
+as the final character falls into place, producing the password 05ace8e3.
+
+Given the actual Door ID and this new method, what is the password? Be extra
+proud of your solution if it uses a cinematic "decrypting" animation.
+
+Your puzzle answer was 999828ec.
+*/
+
+var InterestingHashGenerator = function () {
+  function InterestingHashGenerator(doorId) {
+    classCallCheck(this, InterestingHashGenerator);
+
+    this.doorId = doorId;
+    this.index = 0;
+  }
+
+  createClass(InterestingHashGenerator, [{
+    key: "next",
+    value: function next() {
+      var hash;
+      do {
+        hash = MD5.hash(this.doorId + this.index++);
+      } while (hash.slice(0, 5) !== "00000");
+      return hash;
+    }
+  }]);
+  return InterestingHashGenerator;
+}();
+
+function part1$4(input) {
+  var generator = new InterestingHashGenerator(input);
+  var password = ["-", "-", "-", "-", "-", "-", "-", "-"];
+  for (var i = 0; i < password.length; i++) {
+    password[i] = generator.next()[5];
+    console.log(password.reduce(function (x, y) {
+      return x + y;
+    }));
+  }
+  return password.reduce(function (x, y) {
+    return x + y;
+  });
+}
+
+function part2$4(input) {
+  var generator = new InterestingHashGenerator(input);
+  var password = ["-", "-", "-", "-", "-", "-", "-", "-"];
+  while (password.includes("-")) {
+    var hash = generator.next(),
+        i = parseInt(hash[5]);
+    if (i < 8 && password[i] === "-") {
+      password[i] = hash[6];
+      console.log(password.reduce(function (x, y) {
+        return x + y;
+      }));
+    }
+  }
+  return password.reduce(function (x, y) {
+    return x + y;
+  });
+}
+
+var input05 = "cxdnnyjw"
+;
+
+console.log("--- DAY 01 ---");
+console.log("--- part 1 ---");
+console.log("solution: " + part1(input01) + "\n\n");
+console.log("--- part 2 ---");
+console.log("solution: " + part2(input01) + "\n\n");
+console.log("--- DAY 02 ---");
+console.log("--- part 1 ---");
+console.log("solution: " + part1$1(input02) + "\n\n");
+console.log("--- part 2 ---");
+console.log("solution: " + part2$1(input02) + "\n\n");
+console.log("--- DAY 03 ---");
+console.log("--- part 1 ---");
+console.log("solution: " + part1$2(input03) + "\n\n");
+console.log("--- part 2 ---");
+console.log("solution: " + part2$2(input03) + "\n\n");
+console.log("--- DAY 04 ---");
+console.log("--- part 1 ---");
+console.log("solution: " + part1$3(input04) + "\n\n");
+console.log("--- part 2 ---");
+console.log("solution: " + part2$3(input04) + "\n\n");
+console.log("--- DAY 05 ---");
+console.log("--- part 1 ---");
+console.log("solution: " + part1$4(input05) + "\n\n");
+console.log("--- part 2 ---");
+console.log("solution: " + part2$4(input05) + "\n\n");
 
 }());
