@@ -66,7 +66,7 @@ class InterestingHashGenerator {
   }
 
   next() {
-    var hash;
+    let hash;
     do {
       hash = MD5.hash(this.doorId + this.index++);
     } while (hash.slice(0, 5) !== "00000")
@@ -76,7 +76,7 @@ class InterestingHashGenerator {
 
 export function part1(input) {
   const generator = new InterestingHashGenerator(input);
-  var password = ["-", "-", "-", "-", "-", "-", "-", "-"];
+  let password = ["-", "-", "-", "-", "-", "-", "-", "-"];
   for (let i = 0; i < password.length; i++) {
     password[i] = generator.next()[5];
     console.log(password.reduce((x, y) => x + y));
@@ -86,7 +86,7 @@ export function part1(input) {
 
 export function part2(input) {
   const generator = new InterestingHashGenerator(input);
-  var password = ["-", "-", "-", "-", "-", "-", "-", "-"];
+  let password = ["-", "-", "-", "-", "-", "-", "-", "-"];
   while (password.includes("-")) {
     const hash = generator.next();
     if (password[hash[5]] === "-") {

@@ -46,9 +46,9 @@ Your puzzle answer was 548. */
   are grouped together. For example, `group([0, 1, 1, 1, 0, 0])` returns `[[0],
   [1, 1, 1], [0, 0]]`. */
 function group(arr) {
-  var groups = [], i = 0;
+  let groups = [], i = 0;
   while (i < arr.length) {
-    var group = [];
+    let group = [];
     do {
       group.push(arr[i++]);
     } while (arr[i] === group[0])
@@ -65,7 +65,7 @@ function shift(char) {
 }
 
 function decrypt(iterations, code) {
-  var chars = code.split("");
+  let chars = code.split("");
   for (let i = 0; i < iterations; i++) {
     chars = chars.map(shift);
   }

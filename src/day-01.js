@@ -79,7 +79,7 @@ function step(state, command) {
   const turnCommand = command.slice(0, 1),
     steps = parseInt(command.slice(1)),
     direction = turn(turnCommand, state.direction);
-  var position = [...state.position],
+  let position = [...state.position],
     visited = new Set(state.visited),
     firstVisitedTwice = state.firstVisitedTwice;
   for (let i = 0; i < steps; i++) {

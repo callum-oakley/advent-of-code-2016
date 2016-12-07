@@ -37,7 +37,7 @@ Your puzzle answer was 1544.
 */
 
 function chunksOf(n, arr) {
-  var chunks = [];
+  let chunks = [];
   for (let i = 0; i < arr.length; i += n) {
     chunks.push([...arr].splice(i, i + n));
   }

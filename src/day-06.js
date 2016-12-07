@@ -47,9 +47,9 @@ Your puzzle answer was pljvorrk.
   are grouped together. For example, `group([0, 1, 1, 1, 0, 0])` returns `[[0],
   [1, 1, 1], [0, 0]]`. */
 function group(arr) {
-  var groups = [], i = 0;
+  let groups = [], i = 0;
   while (i < arr.length) {
-    var group = [];
+    let group = [];
     do {
       group.push(arr[i++]);
     } while (arr[i] === group[0])
@@ -60,7 +60,7 @@ function group(arr) {
 
 // Transpose an array of arrays (treated as a matrix).
 function transpose(arr) {
-  var transposed = [];
+  let transposed = [];
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr[0].length; j++) {
       if (!transposed[j]) { transposed[j] = []; }
