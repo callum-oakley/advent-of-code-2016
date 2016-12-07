@@ -46,14 +46,10 @@ in your puzzle input support SSL?
 Your puzzle answer was 231.
 */
 
-function isABBA(str) {
-  const [a, b, c, d] = str.split("");
-  return a !== b && a === d && b === c;
-}
-
 function containsABBA(str) {
   for (let i = 0; i + 4 <= str.length; i++) {
-    if (isABBA(str.slice(i, i + 4))) { return true; }
+    const [a, b, c, d] = str.slice(i, i + 4).split("");
+    if (a !== b && a === d && b === c) { return true; }
   }
   return false;
 }

@@ -803,20 +803,16 @@ in your puzzle input support SSL?
 Your puzzle answer was 231.
 */
 
-function isABBA(str) {
-  var _str$split = str.split(""),
-      _str$split2 = slicedToArray(_str$split, 4),
-      a = _str$split2[0],
-      b = _str$split2[1],
-      c = _str$split2[2],
-      d = _str$split2[3];
-
-  return a !== b && a === d && b === c;
-}
-
 function containsABBA(str) {
   for (var i = 0; i + 4 <= str.length; i++) {
-    if (isABBA(str.slice(i, i + 4))) {
+    var _str$slice$split = str.slice(i, i + 4).split(""),
+        _str$slice$split2 = slicedToArray(_str$slice$split, 4),
+        a = _str$slice$split2[0],
+        b = _str$slice$split2[1],
+        c = _str$slice$split2[2],
+        d = _str$slice$split2[3];
+
+    if (a !== b && a === d && b === c) {
       return true;
     }
   }
