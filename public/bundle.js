@@ -834,13 +834,13 @@ function supportsSSL(_ref2) {
   var supernets = _ref2.supernets,
       hypernets = _ref2.hypernets;
 
-  return supernets.some(function (supernet) {
+  return supernets.some(function (s) {
     var _loop = function _loop(i) {
-      var _supernet$slice$split = supernet.slice(i, i + 3).split(""),
-          _supernet$slice$split2 = slicedToArray(_supernet$slice$split, 3),
-          a = _supernet$slice$split2[0],
-          b = _supernet$slice$split2[1],
-          c = _supernet$slice$split2[2];
+      var _s$slice$split = s.slice(i, i + 3).split(""),
+          _s$slice$split2 = slicedToArray(_s$slice$split, 3),
+          a = _s$slice$split2[0],
+          b = _s$slice$split2[1],
+          c = _s$slice$split2[2];
 
       if (a !== b && a === c && hypernets.some(function (h) {
         return h.includes(b + a + b);
@@ -851,7 +851,7 @@ function supportsSSL(_ref2) {
       }
     };
 
-    for (var i = 0; i + 3 <= supernet.length; i++) {
+    for (var i = 0; i + 3 <= s.length; i++) {
       var _ret = _loop(i);
 
       if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;

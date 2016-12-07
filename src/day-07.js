@@ -63,9 +63,9 @@ function supportsTLS({ supernets, hypernets }) {
 }
 
 function supportsSSL({ supernets, hypernets }) {
-  return supernets.some(supernet => {
-    for (let i = 0; i + 3 <= supernet.length; i++) {
-      const [a, b, c] = supernet.slice(i, i + 3).split("");
+  return supernets.some(s => {
+    for (let i = 0; i + 3 <= s.length; i++) {
+      const [a, b, c] = s.slice(i, i + 3).split("");
       if (a !== b && a === c && hypernets.some(h => h.includes(b + a + b))) {
         return true;
       }
