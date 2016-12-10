@@ -1,11 +1,70 @@
+/*
+--- Day 8: Two-Factor Authentication ---
+
+You come across a door implementing what you can only assume is an
+implementation of two-factor authentication after a long game of requirements
+telephone.
+
+To get past the door, you first swipe a keycard (no problem; there was one on a
+nearby desk). Then, it displays a code on a little screen, and you type that
+code on a keypad. Then, presumably, the door unlocks.
+
+Unfortunately, the screen has been smashed. After a few minutes, you've taken
+everything apart and figured out how it works. Now you just have to work out
+what the screen would have displayed.
+
+The magnetic strip on the card you swiped encodes a series of instructions for
+the screen; these instructions are your puzzle input. The screen is 50 pixels
+wide and 6 pixels tall, all of which start off, and is capable of three somewhat
+peculiar operations:
+
+rect AxB turns on all of the pixels in a rectangle at the top-left of the screen
+which is A wide and B tall. rotate row y=A by B shifts all of the pixels in row
+A (0 is the top row) right by B pixels. Pixels that would fall off the right end
+appear at the left end of the row. rotate column x=A by B shifts all of the
+pixels in column A (0 is the left column) down by B pixels. Pixels that would
+fall off the bottom appear at the top of the column. For example, here is a
+simple sequence on a smaller screen:
+
+rect 3x2 creates a small rectangle in the top-left corner:
+
+###.... .... ....... rotate column x=1 by 1 rotates the second column down by
+###one pixel:
+
+#.#.... ##.... .#..... rotate row y=0 by 4 rotates the top row right by four
+#pixels:
+
+....#.# ###.... .#..... rotate column x=1 by 1 again rotates the second column
+down by one pixel, causing the bottom pixel to wrap back to the top:
+
+.#..#.# #.#.... .#..... As you can see, this display technology is extremely
+powerful, and will soon dominate the tiny-code-displaying-screen market. That's
+what the advertisement on the back of the display tries to convince you, anyway.
+
+There seems to be an intermediate check of the voltage used by the display:
+after you swipe your card, if the screen did work, how many pixels should be
+lit?
+
+Your puzzle answer was 106.
+
+--- Part Two ---
+
+You notice that the screen is only capable of displaying capital letters; in the
+font it uses, each letter is 5 pixels wide and 6 tall.
+
+After you swipe your card, what code is the screen trying to display?
+
+Your puzzle answer was CFLELOYFCS.
+*/
+
 class Screen {
   constructor(width, height) {
     this.width = width;
     this.height = height;
     this.pixels = [];
-    for (let i = 0; i < width; i++) {
+    for (let x = 0; x < width; x++) {
       this.pixels.push([]);
-      for (let j = 0; j < height; j++) { this.pixels[i][j] = " "; }
+      for (let y = 0; y < height; y++) { this.pixels[x][y] = " "; }
     }
   }
 
@@ -16,41 +75,36 @@ class Screen {
   }
 
   rect({ width, height }) {
-    for (let i = 0; i < width; i++) {
-      for (let j = 0; j < height; j++) { this.pixels[i][j] = "#"; }
+    for (let x = 0; x < width; x++) {
+      for (let y = 0; y < height; y++) { this.pixels[x][y] = "#"; }
     }
   }
 
   rotateRow({ row, distance }) {
     const oldRow = [];
-    for (let i = 0; i < this.width; i++) {
-      oldRow.push(this.pixels[i][row]);
-      const rotatedIndex = (i - distance + this.width) % this.width;
-      this.pixels[i][row] =
+    for (let x = 0; x < this.width; x++) {
+      oldRow.push(this.pixels[x][row]);
+      const rotatedIndex = (x - distance + this.width) % this.width;
+      this.pixels[x][row] =
         oldRow[rotatedIndex] || this.pixels[rotatedIndex][row];
     }
   }
 
   rotateColumn({ column, distance }) {
     const oldColumn = [];
-    for (let i = 0; i < this.height; i++) {
-      oldColumn.push(this.pixels[column][i]);
-      const rotatedIndex = (i - distance + this.height) % this.height;
-      this.pixels[column][i] =
+    for (let y = 0; y < this.height; y++) {
+      oldColumn.push(this.pixels[column][y]);
+      const rotatedIndex = (y - distance + this.height) % this.height;
+      this.pixels[column][y] =
         oldColumn[rotatedIndex] || this.pixels[column][rotatedIndex];
     }
   }
 
-  get litPixels() {
-    return this.pixels
-      .reduce((x, y) => [...x, ...y]).filter(p => p === "#").length;
-  }
-
   get displayed() {
     let display = "";
-    for (let i = 0; i < this.height; i++) {
-      for (let j = 0; j < this.width; j++) {
-        display += this.pixels[j][i];
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        display += this.pixels[x][y];
       }
       display += "\n";
     }
@@ -61,7 +115,8 @@ class Screen {
 export function part1(input) {
   const screen = new Screen(50, 6);
   input.forEach(op => screen.process(op));
-  return screen.litPixels;
+  return screen.pixels
+    .reduce((x, y) => [...x, ...y]).filter(p => p === "#").length;
 }
 
 export function part2(input) {
