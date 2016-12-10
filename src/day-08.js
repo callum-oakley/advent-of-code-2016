@@ -5,7 +5,7 @@ class Screen {
     this.pixels = [];
     for (let i = 0; i < width; i++) {
       this.pixels.push([]);
-      for (let j = 0; j < height; j++) { this.pixels[i][j] = "."; }
+      for (let j = 0; j < height; j++) { this.pixels[i][j] = " "; }
     }
   }
 
@@ -45,20 +45,28 @@ class Screen {
     return this.pixels
       .reduce((x, y) => [...x, ...y]).filter(p => p === "#").length;
   }
+
+  get displayed() {
+    let display = "";
+    for (let i = 0; i < this.height; i++) {
+      for (let j = 0; j < this.width; j++) {
+        display += this.pixels[j][i];
+      }
+      display += "\n";
+    }
+    return display;
+  }
 }
 
 export function part1(input) {
   const screen = new Screen(50, 6);
   input.forEach(op => screen.process(op));
   return screen.litPixels;
-  // const screen = new Screen(7, 3);
-  // screen.rect({ width: 3, height: 2 });
-  // screen.rotateColumn({ column: 1, distance: 1 });
-  // screen.rotateRow({ row: 0, distance: 4 });
-  // console.log(screen.pixels);
-  // screen.rotateColumn({ column: 1, distance: 1 });
 }
 
 export function part2(input) {
-
+  const screen = new Screen(50, 6);
+  input.forEach(op => screen.process(op));
+  console.log(screen.displayed);
+  return "See above."
 }

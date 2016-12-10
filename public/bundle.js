@@ -771,7 +771,7 @@ var Screen = function () {
     for (var i = 0; i < width; i++) {
       this.pixels.push([]);
       for (var j = 0; j < height; j++) {
-        this.pixels[i][j] = ".";
+        this.pixels[i][j] = " ";
       }
     }
   }
@@ -839,6 +839,18 @@ var Screen = function () {
         return p === "#";
       }).length;
     }
+  }, {
+    key: "displayed",
+    get: function get() {
+      var display = "";
+      for (var i = 0; i < this.height; i++) {
+        for (var j = 0; j < this.width; j++) {
+          display += this.pixels[j][i];
+        }
+        display += "\n";
+      }
+      return display;
+    }
   }]);
   return Screen;
 }();
@@ -849,15 +861,16 @@ function part1$7(input) {
     return screen.process(op);
   });
   return screen.litPixels;
-  // const screen = new Screen(7, 3);
-  // screen.rect({ width: 3, height: 2 });
-  // screen.rotateColumn({ column: 1, distance: 1 });
-  // screen.rotateRow({ row: 0, distance: 4 });
-  // console.log(screen.pixels);
-  // screen.rotateColumn({ column: 1, distance: 1 });
 }
 
-function part2$7(input) {}
+function part2$7(input) {
+  var screen = new Screen(50, 6);
+  input.forEach(function (op) {
+    return screen.process(op);
+  });
+  console.log(screen.displayed);
+  return "See above.";
+}
 
 var input08 = [
   {
