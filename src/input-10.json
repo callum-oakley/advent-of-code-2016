@@ -1,0 +1,1367 @@
+[
+  {
+    "operation": "defineBotBehaviour",
+    "id": 153,
+    "lowTo": "bot 105",
+    "highTo": "bot 10"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 84,
+    "lowTo": "bot 149",
+    "highTo": "bot 198"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 32,
+    "lowTo": "bot 124",
+    "highTo": "bot 76"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 177,
+    "lowTo": "output 8",
+    "highTo": "bot 19"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 64,
+    "lowTo": "bot 6",
+    "highTo": "bot 179"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 115,
+    "lowTo": "bot 181",
+    "highTo": "bot 190"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 169,
+    "lowTo": "bot 21",
+    "highTo": "bot 60"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 106,
+    "lowTo": "bot 17",
+    "highTo": "bot 84"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 129,
+    "lowTo": "bot 52",
+    "highTo": "bot 57"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 208,
+    "lowTo": "bot 78",
+    "highTo": "bot 121"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 179,
+    "lowTo": "bot 101",
+    "highTo": "bot 103"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 42,
+    "lowTo": "bot 125",
+    "highTo": "bot 67"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 164,
+    "lowTo": "bot 49",
+    "highTo": "bot 71"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 175,
+    "lowTo": "bot 135",
+    "highTo": "bot 201"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 71,
+    "lowTo": "bot 207",
+    "highTo": "bot 88"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 12,
+    "lowTo": "output 4",
+    "highTo": "bot 125"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 11,
+    "recipient": "bot 124"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 190,
+    "lowTo": "bot 41",
+    "highTo": "bot 171"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 18,
+    "lowTo": "bot 189",
+    "highTo": "bot 110"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 2 ,
+    "recipient": "bot 93"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 48,
+    "lowTo": "bot 45",
+    "highTo": "bot 68"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 145,
+    "lowTo": "bot 55",
+    "highTo": "bot 157"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 151,
+    "lowTo": "bot 146",
+    "highTo": "bot 162"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 160,
+    "lowTo": "bot 39",
+    "highTo": "bot 56"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 39,
+    "lowTo": "bot 205",
+    "highTo": "bot 79"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 16,
+    "lowTo": "bot 174",
+    "highTo": "bot 132"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 152,
+    "lowTo": "bot 206",
+    "highTo": "bot 166"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 107,
+    "lowTo": "bot 160",
+    "highTo": "bot 184"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 111,
+    "lowTo": "output 11",
+    "highTo": "bot 163"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 24,
+    "lowTo": "bot 42",
+    "highTo": "bot 159"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 120,
+    "lowTo": "bot 30",
+    "highTo": "bot 183"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 130,
+    "lowTo": "bot 80",
+    "highTo": "bot 146"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 117,
+    "lowTo": "output 17",
+    "highTo": "bot 174"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 47,
+    "recipient": "bot 107"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 77,
+    "lowTo": "bot 70",
+    "highTo": "bot 50"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 67,
+    "recipient": "bot 205"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 167,
+    "lowTo": "bot 202",
+    "highTo": "bot 33"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 28,
+    "lowTo": "output 12",
+    "highTo": "bot 139"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 20,
+    "lowTo": "bot 147",
+    "highTo": "bot 7"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 54,
+    "lowTo": "bot 183",
+    "highTo": "bot 175"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 71,
+    "recipient": "bot 21"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 59,
+    "lowTo": "output 2",
+    "highTo": "bot 47"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 72,
+    "lowTo": "bot 54",
+    "highTo": "bot 53"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 23,
+    "recipient": "bot 120"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 17,
+    "lowTo": "bot 162",
+    "highTo": "bot 149"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 15,
+    "lowTo": "bot 182",
+    "highTo": "bot 1"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 90,
+    "lowTo": "bot 15",
+    "highTo": "bot 195"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 170,
+    "lowTo": "bot 158",
+    "highTo": "bot 69"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 22,
+    "lowTo": "bot 65",
+    "highTo": "bot 62"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 46,
+    "lowTo": "bot 92",
+    "highTo": "bot 90"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 69,
+    "lowTo": "bot 59",
+    "highTo": "bot 49"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 58,
+    "lowTo": "bot 140",
+    "highTo": "bot 45"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 148,
+    "lowTo": "bot 151",
+    "highTo": "bot 17"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 17,
+    "recipient": "bot 189"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 180,
+    "lowTo": "output 18",
+    "highTo": "bot 134"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 205,
+    "lowTo": "bot 197",
+    "highTo": "bot 0"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 97,
+    "lowTo": "bot 126",
+    "highTo": "bot 108"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 196,
+    "lowTo": "bot 2",
+    "highTo": "bot 37"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 158,
+    "lowTo": "output 7",
+    "highTo": "bot 59"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 5,
+    "lowTo": "bot 187",
+    "highTo": "bot 95"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 2,
+    "lowTo": "bot 164",
+    "highTo": "bot 99"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 19,
+    "lowTo": "output 14",
+    "highTo": "bot 158"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 5 ,
+    "recipient": "bot 13"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 103,
+    "lowTo": "bot 43",
+    "highTo": "bot 75"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 161,
+    "lowTo": "bot 73",
+    "highTo": "bot 24"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 99,
+    "lowTo": "bot 71",
+    "highTo": "bot 91"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 83,
+    "lowTo": "bot 179",
+    "highTo": "bot 113"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 14,
+    "lowTo": "bot 31",
+    "highTo": "bot 104"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 55,
+    "lowTo": "bot 51",
+    "highTo": "bot 5"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 127,
+    "lowTo": "bot 66",
+    "highTo": "bot 65"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 34,
+    "lowTo": "bot 137",
+    "highTo": "bot 112"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 3 ,
+    "recipient": "bot 111"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 135,
+    "lowTo": "bot 203",
+    "highTo": "bot 152"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 194,
+    "lowTo": "bot 107",
+    "highTo": "bot 40"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 166,
+    "lowTo": "bot 87",
+    "highTo": "bot 26"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 184,
+    "lowTo": "bot 56",
+    "highTo": "bot 23"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 116,
+    "lowTo": "bot 23",
+    "highTo": "bot 168"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 113,
+    "lowTo": "bot 103",
+    "highTo": "bot 92"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 47,
+    "lowTo": "output 6",
+    "highTo": "bot 200"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 65,
+    "lowTo": "bot 170",
+    "highTo": "bot 192"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 52,
+    "lowTo": "bot 83",
+    "highTo": "bot 119"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 139,
+    "lowTo": "output 5",
+    "highTo": "bot 81"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 142,
+    "lowTo": "bot 153",
+    "highTo": "bot 172"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 73,
+    "recipient": "bot 30"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 44,
+    "lowTo": "bot 145",
+    "highTo": "bot 70"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 133,
+    "lowTo": "bot 127",
+    "highTo": "bot 22"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 163,
+    "lowTo": "output 19",
+    "highTo": "bot 117"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 75,
+    "lowTo": "bot 196",
+    "highTo": "bot 182"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 136,
+    "lowTo": "bot 134",
+    "highTo": "bot 73"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 29,
+    "recipient": "bot 185"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 73,
+    "lowTo": "bot 12",
+    "highTo": "bot 42"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 31,
+    "lowTo": "bot 109",
+    "highTo": "bot 97"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 91,
+    "lowTo": "bot 88",
+    "highTo": "bot 51"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 59,
+    "recipient": "bot 39"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 110,
+    "lowTo": "bot 72",
+    "highTo": "bot 53"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 186,
+    "lowTo": "bot 38",
+    "highTo": "bot 188"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 19,
+    "recipient": "bot 185"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 154,
+    "lowTo": "bot 16",
+    "highTo": "bot 98"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 81,
+    "lowTo": "output 20",
+    "highTo": "output 3"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 92,
+    "lowTo": "bot 75",
+    "highTo": "bot 15"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 202,
+    "lowTo": "bot 74",
+    "highTo": "bot 208"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 183,
+    "lowTo": "bot 100",
+    "highTo": "bot 135"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 68,
+    "lowTo": "bot 64",
+    "highTo": "bot 83"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 198,
+    "lowTo": "bot 4",
+    "highTo": "bot 137"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 61,
+    "lowTo": "output 13",
+    "highTo": "bot 109"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 209,
+    "lowTo": "bot 102",
+    "highTo": "bot 153"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 201,
+    "lowTo": "bot 152",
+    "highTo": "bot 166"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 181,
+    "lowTo": "bot 90",
+    "highTo": "bot 41"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 56,
+    "lowTo": "bot 79",
+    "highTo": "bot 186"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 49,
+    "lowTo": "bot 47",
+    "highTo": "bot 207"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 6,
+    "lowTo": "bot 133",
+    "highTo": "bot 101"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 4,
+    "lowTo": "bot 35",
+    "highTo": "bot 129"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 11,
+    "lowTo": "bot 117",
+    "highTo": "bot 16"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 38,
+    "lowTo": "bot 89",
+    "highTo": "bot 138"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 13,
+    "recipient": "bot 169"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 118,
+    "lowTo": "bot 11",
+    "highTo": "bot 154"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 29,
+    "lowTo": "bot 198",
+    "highTo": "bot 34"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 197,
+    "lowTo": "bot 32",
+    "highTo": "bot 9"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 185,
+    "lowTo": "bot 18",
+    "highTo": "bot 110"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 174,
+    "lowTo": "output 0",
+    "highTo": "bot 177"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 33,
+    "lowTo": "bot 208",
+    "highTo": "bot 144"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 78,
+    "lowTo": "bot 29",
+    "highTo": "bot 27"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 172,
+    "lowTo": "bot 10",
+    "highTo": "bot 178"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 146,
+    "lowTo": "bot 204",
+    "highTo": "bot 122"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 57,
+    "lowTo": "bot 119",
+    "highTo": "bot 141"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 3,
+    "lowTo": "bot 48",
+    "highTo": "bot 35"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 70,
+    "lowTo": "bot 157",
+    "highTo": "bot 50"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 122,
+    "lowTo": "bot 58",
+    "highTo": "bot 48"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 96,
+    "lowTo": "bot 61",
+    "highTo": "bot 31"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 128,
+    "lowTo": "bot 141",
+    "highTo": "bot 115"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 173,
+    "lowTo": "bot 163",
+    "highTo": "bot 11"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 105,
+    "lowTo": "bot 136",
+    "highTo": "bot 161"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 157,
+    "lowTo": "bot 5",
+    "highTo": "bot 176"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 9,
+    "lowTo": "bot 76",
+    "highTo": "bot 148"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 140,
+    "lowTo": "bot 155",
+    "highTo": "bot 191"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 89,
+    "lowTo": "bot 148",
+    "highTo": "bot 106"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 141,
+    "lowTo": "bot 46",
+    "highTo": "bot 181"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 37,
+    "lowTo": "bot 99",
+    "highTo": "bot 86"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 23,
+    "lowTo": "bot 186",
+    "highTo": "bot 114"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 131,
+    "lowTo": "bot 60",
+    "highTo": "bot 143"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 0,
+    "lowTo": "bot 9",
+    "highTo": "bot 89"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 162,
+    "lowTo": "bot 122",
+    "highTo": "bot 3"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 51,
+    "lowTo": "bot 14",
+    "highTo": "bot 187"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 124,
+    "lowTo": "bot 93",
+    "highTo": "bot 130"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 88,
+    "lowTo": "bot 96",
+    "highTo": "bot 14"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 206,
+    "lowTo": "bot 168",
+    "highTo": "bot 87"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 7 ,
+    "recipient": "bot 197"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 95,
+    "lowTo": "bot 209",
+    "highTo": "bot 142"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 26,
+    "lowTo": "bot 33",
+    "highTo": "bot 144"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 191,
+    "lowTo": "bot 82",
+    "highTo": "bot 6"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 189,
+    "lowTo": "bot 13",
+    "highTo": "bot 72"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 165,
+    "lowTo": "bot 118",
+    "highTo": "bot 155"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 125,
+    "lowTo": "output 1",
+    "highTo": "bot 28"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 195,
+    "lowTo": "bot 1",
+    "highTo": "bot 36"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 112,
+    "lowTo": "bot 94",
+    "highTo": "bot 147"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 62,
+    "lowTo": "bot 192",
+    "highTo": "bot 2"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 86,
+    "lowTo": "bot 91",
+    "highTo": "bot 55"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 126,
+    "lowTo": "output 10",
+    "highTo": "bot 180"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 187,
+    "lowTo": "bot 104",
+    "highTo": "bot 209"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 147,
+    "lowTo": "bot 128",
+    "highTo": "bot 7"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 53,
+    "recipient": "bot 156"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 156,
+    "lowTo": "bot 111",
+    "highTo": "bot 173"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 43,
+    "recipient": "bot 32"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 13,
+    "lowTo": "bot 120",
+    "highTo": "bot 54"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 45,
+    "lowTo": "bot 191",
+    "highTo": "bot 64"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 30,
+    "lowTo": "bot 194",
+    "highTo": "bot 100"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 94,
+    "lowTo": "bot 57",
+    "highTo": "bot 128"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 182,
+    "lowTo": "bot 37",
+    "highTo": "bot 25"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 36,
+    "lowTo": "bot 44",
+    "highTo": "bot 77"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 8,
+    "lowTo": "bot 139",
+    "highTo": "bot 81"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 66,
+    "lowTo": "bot 19",
+    "highTo": "bot 170"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 50,
+    "lowTo": "bot 176",
+    "highTo": "bot 123"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 192,
+    "lowTo": "bot 69",
+    "highTo": "bot 164"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 178,
+    "lowTo": "bot 24",
+    "highTo": "bot 159"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 7,
+    "lowTo": "bot 115",
+    "highTo": "bot 190"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 193,
+    "lowTo": "bot 63",
+    "highTo": "bot 20"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 25,
+    "lowTo": "bot 86",
+    "highTo": "bot 145"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 199,
+    "lowTo": "bot 169",
+    "highTo": "bot 131"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 93,
+    "lowTo": "bot 199",
+    "highTo": "bot 80"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 104,
+    "lowTo": "bot 97",
+    "highTo": "bot 102"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 114,
+    "lowTo": "bot 188",
+    "highTo": "bot 202"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 134,
+    "lowTo": "output 16",
+    "highTo": "bot 12"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 203,
+    "lowTo": "bot 116",
+    "highTo": "bot 206"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 98,
+    "lowTo": "bot 132",
+    "highTo": "bot 127"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 123,
+    "lowTo": "bot 142",
+    "highTo": "bot 172"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 121,
+    "lowTo": "bot 27",
+    "highTo": "bot 193"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 207,
+    "lowTo": "bot 200",
+    "highTo": "bot 96"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 176,
+    "lowTo": "bot 95",
+    "highTo": "bot 123"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 204,
+    "lowTo": "bot 143",
+    "highTo": "bot 58"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 132,
+    "lowTo": "bot 177",
+    "highTo": "bot 66"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 155,
+    "lowTo": "bot 154",
+    "highTo": "bot 82"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 27,
+    "lowTo": "bot 34",
+    "highTo": "bot 63"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 74,
+    "lowTo": "bot 85",
+    "highTo": "bot 78"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 60,
+    "lowTo": "bot 150",
+    "highTo": "bot 165"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 85,
+    "lowTo": "bot 84",
+    "highTo": "bot 29"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 79,
+    "lowTo": "bot 0",
+    "highTo": "bot 38"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 159,
+    "lowTo": "bot 67",
+    "highTo": "bot 8"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 1,
+    "lowTo": "bot 25",
+    "highTo": "bot 44"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 41,
+    "lowTo": "bot 195",
+    "highTo": "bot 171"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 100,
+    "lowTo": "bot 40",
+    "highTo": "bot 203"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 200,
+    "lowTo": "output 15",
+    "highTo": "bot 61"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 37,
+    "recipient": "bot 18"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 76,
+    "lowTo": "bot 130",
+    "highTo": "bot 151"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 102,
+    "lowTo": "bot 108",
+    "highTo": "bot 105"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 35,
+    "lowTo": "bot 68",
+    "highTo": "bot 52"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 21,
+    "lowTo": "bot 156",
+    "highTo": "bot 150"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 188,
+    "lowTo": "bot 138",
+    "highTo": "bot 74"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 10,
+    "lowTo": "bot 161",
+    "highTo": "bot 178"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 82,
+    "lowTo": "bot 98",
+    "highTo": "bot 133"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 171,
+    "lowTo": "bot 36",
+    "highTo": "bot 77"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 40,
+    "lowTo": "bot 184",
+    "highTo": "bot 116"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 150,
+    "lowTo": "bot 173",
+    "highTo": "bot 118"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 43,
+    "lowTo": "bot 62",
+    "highTo": "bot 196"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 119,
+    "lowTo": "bot 113",
+    "highTo": "bot 46"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 168,
+    "lowTo": "bot 114",
+    "highTo": "bot 167"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 144,
+    "lowTo": "bot 121",
+    "highTo": "bot 193"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 80,
+    "lowTo": "bot 131",
+    "highTo": "bot 204"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 63,
+    "lowTo": "bot 112",
+    "highTo": "bot 20"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 67,
+    "lowTo": "bot 28",
+    "highTo": "bot 8"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 109,
+    "lowTo": "output 9",
+    "highTo": "bot 126"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 31,
+    "recipient": "bot 199"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 61,
+    "recipient": "bot 160"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 87,
+    "lowTo": "bot 167",
+    "highTo": "bot 26"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 138,
+    "lowTo": "bot 106",
+    "highTo": "bot 85"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 108,
+    "lowTo": "bot 180",
+    "highTo": "bot 136"
+  },
+  {
+    "operation": "assignChip",
+    "chip": 41,
+    "recipient": "bot 194"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 143,
+    "lowTo": "bot 165",
+    "highTo": "bot 140"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 53,
+    "lowTo": "bot 175",
+    "highTo": "bot 201"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 137,
+    "lowTo": "bot 129",
+    "highTo": "bot 94"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 149,
+    "lowTo": "bot 3",
+    "highTo": "bot 4"
+  },
+  {
+    "operation": "defineBotBehaviour",
+    "id": 101,
+    "lowTo": "bot 22",
+    "highTo": "bot 43"
+  }
+]
