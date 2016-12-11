@@ -1,49 +1,19 @@
 {
   "floor 1": [
-    {
-      "element": "strontium",
-      "device": "generator"
-    },
-    {
-      "element": "strontium",
-      "device": "microchip"
-    },
-    {
-      "element": "plutonium",
-      "device": "generator"
-    },
-    {
-      "element": "plutonium",
-      "device": "microchip"
-    }
+    { "element": "strontium", "device": "generator" },
+    { "element": "strontium", "device": "microchip" },
+    { "element": "plutonium", "device": "generator" },
+    { "element": "plutonium", "device": "microchip" }
   ],
   "floor 2": [
-    {
-      "element": "thulium",
-      "device": "generator"
-    },
-    {
-      "element": "ruthenium",
-      "device": "generator"
-    },
-    {
-      "element": "ruthenium",
-      "device": "microchip"
-    },
-    {
-      "element": "curium",
-      "device": "generator"
-    },
-    {
-      "element": "curium",
-      "device": "microchip"
-    }
+    { "element": "thulium", "device": "generator" },
+    { "element": "ruthenium", "device": "generator" },
+    { "element": "ruthenium", "device": "microchip" },
+    { "element": "curium", "device": "generator" },
+    { "element": "curium", "device": "microchip" }
   ],
   "floor 3": [
-    {
-      "element": "thulium",
-      "device": "microchip"
-    }
+    { "element": "thulium", "device": "microchip" }
   ],
   "floor 4": [],
   "elevator": "floor 1"
