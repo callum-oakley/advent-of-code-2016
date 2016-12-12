@@ -6,7 +6,7 @@ function execute(s, op, x, y) {
   if (op === "cpy") { s[y] = read(s, x); }
   if (op === "inc") { s[x]++; }
   if (op === "dec") { s[x]--; }
-  if (op === "jnz") { if (read(s, x)) { s.head += read(s, y) - 1 }; }
+  if (op === "jnz") { if (read(s, x)) { s.head += read(s, y) - 1; } }
   s.head++;
 }
 
