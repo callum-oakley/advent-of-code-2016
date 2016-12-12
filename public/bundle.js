@@ -1426,38 +1426,84 @@ function possibleSteps(state) {
   })));
 }
 
-function breadthFirstSearch$1(initialState) {
-  var states = [initialState],
-      steps = 0;
-  var tracker = new StateTracker(states);
-  while (!states.some(isComplete)) {
-    states = states.map(possibleSteps).reduce(function (x, y) {
-      return [].concat(toConsumableArray(x), toConsumableArray(y));
-    }).filter(function (s) {
-      return isGood(s) && !tracker.seen(s);
-    });
-    steps++;
-    console.log("At step " + steps + " with " + states.length + " states...");
+function isRegister(x) {
+  return ["a", "b", "c", "d"].includes(x);
+}
+
+function read(s, x) {
+  return isRegister(x) ? s[x] : parseInt(x, 10);
+}
+
+function executeCpy(s, x, y) {
+  s[y] = read(s, x);
+}
+
+function executeInc(s, x) {
+  s[x]++;
+}
+
+function executeDec(s, x) {
+  s[x]--;
+}
+
+function executeJnz(s, x, y) {
+  if (read(s, x)) {
+    s.head += read(s, y) - 1;
   }
-  return steps;
 }
 
-var part1$10 = breadthFirstSearch$1;
-
-function part2$10(input) {
-  return breadthFirstSearch$1(_extends({}, input, {
-    "floor 1": [].concat(toConsumableArray(input["floor 1"]), [{ "element": "elerium", "device": "microchip" }, { "element": "elerium", "device": "generator" }, { "element": "dilithium", "device": "microchip" }, { "element": "dilithium", "device": "generator" }])
-  }));
+function execute(state, line) {
+  if (line.op === "cpy") {
+    executeCpy.apply(undefined, [state].concat(toConsumableArray(line.args)));
+  }
+  if (line.op === "inc") {
+    executeInc.apply(undefined, [state].concat(toConsumableArray(line.args)));
+  }
+  if (line.op === "dec") {
+    executeDec.apply(undefined, [state].concat(toConsumableArray(line.args)));
+  }
+  if (line.op === "jnz") {
+    executeJnz.apply(undefined, [state].concat(toConsumableArray(line.args)));
+  }
+  state.head++;
 }
 
-var elevator = "floor 1";
-var input11 = {
-	elevator: elevator,
-	"floor 1": [{"element":"strontium","device":"generator"},{"element":"strontium","device":"microchip"},{"element":"plutonium","device":"generator"},{"element":"plutonium","device":"microchip"}],
-	"floor 2": [{"element":"thulium","device":"generator"},{"element":"ruthenium","device":"generator"},{"element":"ruthenium","device":"microchip"},{"element":"curium","device":"generator"},{"element":"curium","device":"microchip"}],
-	"floor 3": [{"element":"thulium","device":"microchip"}],
-	"floor 4": []
-};
+function part1$11(input) {
+  var state = { a: 0, b: 0, c: 0, d: 0, head: 0 };
+  while (input[state.head]) {
+    execute(state, input[state.head]);
+  }
+  return state.a;
+}
+
+function part2$11(input) {}
+
+var input12 = [
+  { "op": "cpy", "args": ["1", "a"] },
+  { "op": "cpy", "args": ["1", "b"] },
+  { "op": "cpy", "args": ["26", "d"] },
+  { "op": "jnz", "args": ["c", "2"] },
+  { "op": "jnz", "args": ["1", "5"] },
+  { "op": "cpy", "args": ["7", "c"] },
+  { "op": "inc", "args": ["d"] },
+  { "op": "dec", "args": ["c"] },
+  { "op": "jnz", "args": ["c", "-2"] },
+  { "op": "cpy", "args": ["a", "c"] },
+  { "op": "inc", "args": ["a"] },
+  { "op": "dec", "args": ["b"] },
+  { "op": "jnz", "args": ["b", "-2"] },
+  { "op": "cpy", "args": ["c", "b"] },
+  { "op": "dec", "args": ["d"] },
+  { "op": "jnz", "args": ["d", "-6"] },
+  { "op": "cpy", "args": ["18", "c"] },
+  { "op": "cpy", "args": ["11", "d"] },
+  { "op": "inc", "args": ["a"] },
+  { "op": "dec", "args": ["d"] },
+  { "op": "jnz", "args": ["d", "-2"] },
+  { "op": "dec", "args": ["c"] },
+  { "op": "jnz", "args": ["c", "-5"] }
+]
+;
 
 // console.log("--- DAY 01 ---");
 // console.log("--- part 1 ---");
@@ -1509,10 +1555,15 @@ var input11 = {
 // console.log(`solution: ${day10.part1(input10)}\n\n`);
 // console.log("--- part 2 ---");
 // console.log(`solution: ${day10.part2(input10)}\n\n`);
-console.log("--- DAY 11 ---");
+// console.log("--- DAY 11 ---");
+// console.log("--- part 1 ---");
+// console.log(`solution: ${day11.part1(input11)}\n\n`);
+// console.log("--- part 2 ---");
+// console.log(`solution: ${day11.part2(input11)}\n\n`);
+console.log("--- DAY 12 ---");
 console.log("--- part 1 ---");
-console.log("solution: " + part1$10(input11) + "\n\n");
+console.log("solution: " + part1$11(input12) + "\n\n");
 console.log("--- part 2 ---");
-console.log("solution: " + part2$10(input11) + "\n\n");
+console.log("solution: " + part2$11(input12) + "\n\n");
 
 }());
