@@ -16,4 +16,8 @@ export function part1(input) {
   return state.a;
 }
 
-export function part2(input) {}
+export function part2(input) {
+  const state = { a: 0, b: 0, c: 1, d: 0, head: 0 };
+  while (input[state.head]) { execute(state, ...input[state.head]); }
+  return state.a;
+}

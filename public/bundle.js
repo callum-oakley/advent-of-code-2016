@@ -1460,7 +1460,13 @@ function part1$11(input) {
   return state.a;
 }
 
-function part2$11(input) {}
+function part2$11(input) {
+  var state = { a: 0, b: 0, c: 1, d: 0, head: 0 };
+  while (input[state.head]) {
+    execute.apply(undefined, [state].concat(toConsumableArray(input[state.head])));
+  }
+  return state.a;
+}
 
 var input12 = [
   ["cpy", "1", "a"],
