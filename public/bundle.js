@@ -1434,44 +1434,28 @@ function read(s, x) {
   return isRegister(x) ? s[x] : parseInt(x, 10);
 }
 
-function executeCpy(s, x, y) {
-  s[y] = read(s, x);
-}
-
-function executeInc(s, x) {
-  s[x]++;
-}
-
-function executeDec(s, x) {
-  s[x]--;
-}
-
-function executeJnz(s, x, y) {
-  if (read(s, x)) {
-    s.head += read(s, y) - 1;
+function execute(s, op, x, y) {
+  if (op === "cpy") {
+    s[y] = read(s, x);
   }
-}
-
-function execute(state, line) {
-  if (line.op === "cpy") {
-    executeCpy.apply(undefined, [state].concat(toConsumableArray(line.args)));
+  if (op === "inc") {
+    s[x]++;
   }
-  if (line.op === "inc") {
-    executeInc.apply(undefined, [state].concat(toConsumableArray(line.args)));
+  if (op === "dec") {
+    s[x]--;
   }
-  if (line.op === "dec") {
-    executeDec.apply(undefined, [state].concat(toConsumableArray(line.args)));
+  if (op === "jnz") {
+    if (read(s, x)) {
+      s.head += read(s, y) - 1;
+    }
   }
-  if (line.op === "jnz") {
-    executeJnz.apply(undefined, [state].concat(toConsumableArray(line.args)));
-  }
-  state.head++;
+  s.head++;
 }
 
 function part1$11(input) {
   var state = { a: 0, b: 0, c: 0, d: 0, head: 0 };
   while (input[state.head]) {
-    execute(state, input[state.head]);
+    execute.apply(undefined, [state].concat(toConsumableArray(input[state.head])));
   }
   return state.a;
 }
@@ -1479,29 +1463,29 @@ function part1$11(input) {
 function part2$11(input) {}
 
 var input12 = [
-  { "op": "cpy", "args": ["1", "a"] },
-  { "op": "cpy", "args": ["1", "b"] },
-  { "op": "cpy", "args": ["26", "d"] },
-  { "op": "jnz", "args": ["c", "2"] },
-  { "op": "jnz", "args": ["1", "5"] },
-  { "op": "cpy", "args": ["7", "c"] },
-  { "op": "inc", "args": ["d"] },
-  { "op": "dec", "args": ["c"] },
-  { "op": "jnz", "args": ["c", "-2"] },
-  { "op": "cpy", "args": ["a", "c"] },
-  { "op": "inc", "args": ["a"] },
-  { "op": "dec", "args": ["b"] },
-  { "op": "jnz", "args": ["b", "-2"] },
-  { "op": "cpy", "args": ["c", "b"] },
-  { "op": "dec", "args": ["d"] },
-  { "op": "jnz", "args": ["d", "-6"] },
-  { "op": "cpy", "args": ["18", "c"] },
-  { "op": "cpy", "args": ["11", "d"] },
-  { "op": "inc", "args": ["a"] },
-  { "op": "dec", "args": ["d"] },
-  { "op": "jnz", "args": ["d", "-2"] },
-  { "op": "dec", "args": ["c"] },
-  { "op": "jnz", "args": ["c", "-5"] }
+  ["cpy", "1", "a"],
+  ["cpy", "1", "b"],
+  ["cpy", "26", "d"],
+  ["jnz", "c", "2"],
+  ["jnz", "1", "5"],
+  ["cpy", "7", "c"],
+  ["inc", "d"],
+  ["dec", "c"],
+  ["jnz", "c", "-2"],
+  ["cpy", "a", "c"],
+  ["inc", "a"],
+  ["dec", "b"],
+  ["jnz", "b", "-2"],
+  ["cpy", "c", "b"],
+  ["dec", "d"],
+  ["jnz", "d", "-6"],
+  ["cpy", "18", "c"],
+  ["cpy", "11", "d"],
+  ["inc", "a"],
+  ["dec", "d"],
+  ["jnz", "d", "-2"],
+  ["dec", "c"],
+  ["jnz", "c", "-5"]
 ]
 ;
 
