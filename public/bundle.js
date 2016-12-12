@@ -1276,21 +1276,26 @@ including these four new ones, to the fourth floor?
 Your puzzle answer was 61.
 */
 
-// Returns the floors that the pair of the given element are on as [fst, snd].
+/* Returns the floors that the pair of the given element are on. Microchip
+  first then generator. */
 function extractPositions(state, element) {
   var positions = [];
   for (var i = 1; i <= 4; i++) {
     var floor = state["floor " + i];
     for (var j = 0; j < floor.length; j++) {
       if (floor[j].element === element) {
+        // We simply delete the element to show it has been accounted for.
         delete floor[j].element;
-        positions.push(i);
+        if (floor[j].device === "microchip") {
+          positions[0] = i;
+        }
+        if (floor[j].device === "generator") {
+          positions[1] = i;
+        }
       }
     }
   }
-  return positions.sort(function (x, y) {
-    return x - y;
-  });
+  return positions;
 }
 
 /* Hashes a state so that states that are equal up to permutation of elements

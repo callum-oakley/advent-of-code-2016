@@ -136,19 +136,22 @@ function compare(x, y) {
   return 0;
 }
 
-// Returns the floors that the pair of the given element are on as [fst, snd].
+/* Returns the floors that the pair of the given element are on. Microchip
+  first then generator. */
 function extractPositions(state, element) {
   const positions = [];
   for (let i = 1; i <= 4; i++) {
     const floor = state[`floor ${i}`];
     for (let j = 0; j < floor.length; j++) {
       if (floor[j].element === element) {
+        // We simply delete the element to show it has been accounted for.
         delete floor[j].element;
-        positions.push(i);
+        if (floor[j].device === "microchip") { positions[0] = i; }
+        if (floor[j].device === "generator") { positions[1] = i; }
       }
     }
   }
-  return positions.sort((x, y) => x - y);
+  return positions;
 }
 
 /* Hashes a state so that states that are equal up to permutation of elements
@@ -160,7 +163,10 @@ function hash(state) {
     const floor = stateCopy[`floor ${i}`];
     for (let j = 0; j < floor.length; j++) {
       if (floor[j].element) {
-        positions.push(extractPositions(stateCopy, floor[j].element).reduce((x, y) => x + y, ""));
+        positions.push(
+          extractPositions(stateCopy, floor[j].element)
+            .reduce((x, y) => x + y, "")
+        );
       }
     }
   }
