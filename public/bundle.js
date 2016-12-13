@@ -1434,65 +1434,103 @@ function read(s, x) {
   return isRegister(x) ? s[x] : parseInt(x, 10);
 }
 
-function execute(s, op, x, y) {
-  if (op === "cpy") {
-    s[y] = read(s, x);
+function is$1(_ref, _ref2) {
+  var _ref4 = slicedToArray(_ref, 2),
+      x0 = _ref4[0],
+      y0 = _ref4[1];
+
+  var _ref3 = slicedToArray(_ref2, 2),
+      x1 = _ref3[0],
+      y1 = _ref3[1];
+
+  return x0 === x1 && y0 === y1;
+}
+
+var Maze = function () {
+  function Maze(faveNum, start) {
+    classCallCheck(this, Maze);
+
+    this.faveNum = faveNum;
+    // A two dimensional array of booleans indicating if a cubicle is a wall.
+    this.cubicles = [];
+    this.hasSeen(start);
   }
-  if (op === "inc") {
-    s[x]++;
-  }
-  if (op === "dec") {
-    s[x]--;
-  }
-  if (op === "jnz") {
-    if (read(s, x)) {
-      s.head += read(s, y) - 1;
+
+  createClass(Maze, [{
+    key: "hasSeen",
+    value: function hasSeen(_ref5) {
+      var _ref6 = slicedToArray(_ref5, 2),
+          x = _ref6[0],
+          y = _ref6[1];
+
+      if (!this.cubicles[x]) {
+        this.cubicles[x] = [];
+      }
+      if (this.cubicles[x][y] === undefined) {
+        this.cubicles[x][y] = (x * x + 3 * x + 2 * x * y + y + y * y + this.faveNum).toString(2).split("").filter(function (c) {
+          return c === "1";
+        }).length % 2 === 1;
+        return false;
+      }
+      return true;
     }
+  }, {
+    key: "isWall",
+    value: function isWall(_ref7) {
+      var _ref8 = slicedToArray(_ref7, 2),
+          x = _ref8[0],
+          y = _ref8[1];
+
+      return this.cubicles[x][y];
+    }
+  }, {
+    key: "newlyReachable",
+    value: function newlyReachable(_ref9) {
+      var _this = this;
+
+      var _ref10 = slicedToArray(_ref9, 2),
+          x = _ref10[0],
+          y = _ref10[1];
+
+      var potential = [[x + 1, y], [x, y + 1], [x - 1, y], [x, y - 1]];
+      return potential.filter(function (_ref11) {
+        var _ref12 = slicedToArray(_ref11, 2),
+            x = _ref12[0],
+            y = _ref12[1];
+
+        return x >= 0 && y >= 0;
+      }).filter(function (c) {
+        return !_this.hasSeen(c) && !_this.isWall(c);
+      });
+    }
+  }]);
+  return Maze;
+}();
+
+function distance(faveNum, start, end) {
+  var boundary = [start],
+      steps = 0,
+      maze = new Maze(faveNum, start);
+  while (!boundary.some(function (c) {
+    return is$1(end, c);
+  })) {
+    boundary = boundary.map(function (c) {
+      return maze.newlyReachable(c);
+    }).reduce(function (x, y) {
+      return [].concat(toConsumableArray(x), toConsumableArray(y));
+    });
+    steps++;
   }
-  s.head++;
+  return steps;
 }
 
-function part1$11(input) {
-  var state = { a: 0, b: 0, c: 0, d: 0, head: 0 };
-  while (input[state.head]) {
-    execute.apply(undefined, [state].concat(toConsumableArray(input[state.head])));
-  }
-  return state.a;
+function part1$12(input) {
+  return distance(input, [1, 1], [31, 39]);
 }
 
-function part2$11(input) {
-  var state = { a: 0, b: 0, c: 1, d: 0, head: 0 };
-  while (input[state.head]) {
-    execute.apply(undefined, [state].concat(toConsumableArray(input[state.head])));
-  }
-  return state.a;
-}
+function part2$12(input) {}
 
-var input12 = [
-  ["cpy", "1", "a"],
-  ["cpy", "1", "b"],
-  ["cpy", "26", "d"],
-  ["jnz", "c", "2"],
-  ["jnz", "1", "5"],
-  ["cpy", "7", "c"],
-  ["inc", "d"],
-  ["dec", "c"],
-  ["jnz", "c", "-2"],
-  ["cpy", "a", "c"],
-  ["inc", "a"],
-  ["dec", "b"],
-  ["jnz", "b", "-2"],
-  ["cpy", "c", "b"],
-  ["dec", "d"],
-  ["jnz", "d", "-6"],
-  ["cpy", "18", "c"],
-  ["cpy", "11", "d"],
-  ["inc", "a"],
-  ["dec", "d"],
-  ["jnz", "d", "-2"],
-  ["dec", "c"],
-  ["jnz", "c", "-5"]
-]
+var input13 = 1352
 ;
 
 // console.log("--- DAY 01 ---");
@@ -1550,10 +1588,15 @@ var input12 = [
 // console.log(`solution: ${day11.part1(input11)}\n\n`);
 // console.log("--- part 2 ---");
 // console.log(`solution: ${day11.part2(input11)}\n\n`);
-console.log("--- DAY 12 ---");
+// console.log("--- DAY 12 ---");
+// console.log("--- part 1 ---");
+// console.log(`solution: ${day12.part1(input12)}\n\n`);
+// console.log("--- part 2 ---");
+// console.log(`solution: ${day12.part2(input12)}\n\n`);
+console.log("--- DAY 13 ---");
 console.log("--- part 1 ---");
-console.log("solution: " + part1$11(input12) + "\n\n");
+console.log("solution: " + part1$12(input13) + "\n\n");
 console.log("--- part 2 ---");
-console.log("solution: " + part2$11(input12) + "\n\n");
+console.log("solution: " + part2$12(input13) + "\n\n");
 
 }());
