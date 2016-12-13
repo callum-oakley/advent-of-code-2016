@@ -1434,17 +1434,49 @@ function read(s, x) {
   return isRegister(x) ? s[x] : parseInt(x, 10);
 }
 
-function is$1(_ref, _ref2) {
-  var _ref4 = slicedToArray(_ref, 2),
-      x0 = _ref4[0],
-      y0 = _ref4[1];
+/*
+--- Day 13: A Maze of Twisty Little Cubicles ---
 
-  var _ref3 = slicedToArray(_ref2, 2),
-      x1 = _ref3[0],
-      y1 = _ref3[1];
+You arrive at the first floor of this new building to discover a much less
+welcoming environment than the shiny atrium of the last one. Instead, you are in
+a maze of twisty little cubicles, all alike.
 
-  return x0 === x1 && y0 === y1;
-}
+Every location in this area is addressed by a pair of non-negative integers
+(x,y). Each such coordinate is either a wall or an open space. You can't move
+diagonally. The cube maze starts at 0,0 and seems to extend infinitely toward
+positive x and y; negative values are invalid, as they represent a location
+outside the building. You are in a small waiting area at 1,1.
+
+While it seems chaotic, a nearby morale-boosting poster explains, the layout is
+actually quite logical. You can determine whether a given x,y coordinate will be
+a wall or an open space using a simple system:
+
+Find x*x + 3*x + 2*x*y + y + y*y. Add the office designer's favorite number
+(your puzzle input). Find the binary representation of that sum; count the
+number of bits that are 1. If the number of bits that are 1 is even, it's an
+open space. If the number of bits that are 1 is odd, it's a wall. For example,
+if the office designer's favorite number were 10, drawing walls as # and open
+spaces as ., the corner of the building containing 0,0 would look like this:
+
+  0123456789 0 .#.####.## 1 ..#..#...# 2 #....##... 3 ###.#.###. 4 .##..#..#. 5 ..##....#.
+  6 #...##.### Now, suppose you wanted to reach 7,4. The shortest route you
+  could take is marked as O:
+
+  0123456789 0 .#.####.## 1 .O#..#...# 2 #OOO.##... 3 ###O#.###. 4 .##OO#OO#. 5
+  ..##OOO.#. 6 #...##.### Thus, reaching 7,4 would take a minimum of 11 steps
+  (starting from your current location, 1,1).
+
+What is the fewest number of steps required for you to reach 31,39?
+
+Your puzzle answer was 90.
+
+--- Part Two ---
+
+How many locations (distinct x,y coordinates, including your starting location)
+can you reach in at most 50 steps?
+
+Your puzzle answer was 135.
+*/
 
 var Maze = function () {
   function Maze(faveNum, start) {
@@ -1453,50 +1485,57 @@ var Maze = function () {
     this.faveNum = faveNum;
     // A two dimensional array of booleans indicating if a cubicle is a wall.
     this.cubicles = [];
+    this.openCubiclesSeen = 0;
     this.hasSeen(start);
   }
 
   createClass(Maze, [{
     key: "hasSeen",
-    value: function hasSeen(_ref5) {
-      var _ref6 = slicedToArray(_ref5, 2),
-          x = _ref6[0],
-          y = _ref6[1];
+    value: function hasSeen(_ref) {
+      var _ref2 = slicedToArray(_ref, 2),
+          x = _ref2[0],
+          y = _ref2[1];
 
       if (!this.cubicles[x]) {
         this.cubicles[x] = [];
       }
       if (this.cubicles[x][y] === undefined) {
-        this.cubicles[x][y] = (x * x + 3 * x + 2 * x * y + y + y * y + this.faveNum).toString(2).split("").filter(function (c) {
+        /* This block will only ever execute once for each (x, y) so we can
+          safely increment openCubiclesSeen here without double counting. */
+        var isWall = (x * x + 3 * x + 2 * x * y + y + y * y + this.faveNum).toString(2).split("").filter(function (c) {
           return c === "1";
         }).length % 2 === 1;
+        if (!isWall) {
+          this.openCubiclesSeen++;
+        }
+        this.cubicles[x][y] = isWall;
         return false;
       }
       return true;
     }
   }, {
     key: "isWall",
-    value: function isWall(_ref7) {
-      var _ref8 = slicedToArray(_ref7, 2),
-          x = _ref8[0],
-          y = _ref8[1];
+    value: function isWall(_ref3) {
+      var _ref4 = slicedToArray(_ref3, 2),
+          x = _ref4[0],
+          y = _ref4[1];
 
       return this.cubicles[x][y];
     }
   }, {
     key: "newlyReachable",
-    value: function newlyReachable(_ref9) {
+    value: function newlyReachable(_ref5) {
       var _this = this;
 
-      var _ref10 = slicedToArray(_ref9, 2),
-          x = _ref10[0],
-          y = _ref10[1];
+      var _ref6 = slicedToArray(_ref5, 2),
+          x = _ref6[0],
+          y = _ref6[1];
 
       var potential = [[x + 1, y], [x, y + 1], [x - 1, y], [x, y - 1]];
-      return potential.filter(function (_ref11) {
-        var _ref12 = slicedToArray(_ref11, 2),
-            x = _ref12[0],
-            y = _ref12[1];
+      return potential.filter(function (_ref7) {
+        var _ref8 = slicedToArray(_ref7, 2),
+            x = _ref8[0],
+            y = _ref8[1];
 
         return x >= 0 && y >= 0;
       }).filter(function (c) {
@@ -1507,12 +1546,16 @@ var Maze = function () {
   return Maze;
 }();
 
-function distance(faveNum, start, end) {
-  var boundary = [start],
+function part1$12(input) {
+  var boundary = [[1, 1]],
       steps = 0,
-      maze = new Maze(faveNum, start);
-  while (!boundary.some(function (c) {
-    return is$1(end, c);
+      maze = new Maze(input, [1, 1]);
+  while (!boundary.some(function (_ref9) {
+    var _ref10 = slicedToArray(_ref9, 2),
+        x = _ref10[0],
+        y = _ref10[1];
+
+    return x === 31 && y === 39;
   })) {
     boundary = boundary.map(function (c) {
       return maze.newlyReachable(c);
@@ -1524,11 +1567,18 @@ function distance(faveNum, start, end) {
   return steps;
 }
 
-function part1$12(input) {
-  return distance(input, [1, 1], [31, 39]);
+function part2$12(input) {
+  var boundary = [[1, 1]],
+      maze = new Maze(input, [1, 1]);
+  for (var steps = 0; steps < 50; steps++) {
+    boundary = boundary.map(function (c) {
+      return maze.newlyReachable(c);
+    }).reduce(function (x, y) {
+      return [].concat(toConsumableArray(x), toConsumableArray(y));
+    });
+  }
+  return maze.openCubiclesSeen;
 }
-
-function part2$12(input) {}
 
 var input13 = 1352
 ;
