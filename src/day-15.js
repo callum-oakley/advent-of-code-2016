@@ -69,7 +69,7 @@ Your puzzle answer was 2080951.
 
 function firstWinningTime(discs) {
   let t = 0, step = 1;
-  discs.forEach(({ delay, positions, start}) => {
+  discs.forEach(({ delay, positions, start }) => {
     while ((start + t + delay) % positions) { t += step; }
     step *= positions;
   });
