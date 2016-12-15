@@ -1,0 +1,8 @@
+[
+  { "delay": 1, "positions": 17, "start": 1 },
+  { "delay": 2, "positions": 7, "start": 0 },
+  { "delay": 3, "positions": 19, "start": 2 },
+  { "delay": 4, "positions": 5, "start": 0 },
+  { "delay": 5, "positions": 3, "start": 0 },
+  { "delay": 6, "positions": 13, "start": 5 }
+]

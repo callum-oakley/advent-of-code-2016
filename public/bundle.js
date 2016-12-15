@@ -1631,60 +1631,77 @@ function getTripleOrNull(hash) {
   return null;
 }
 
-function indexOfKey(n, salt, hashMethod) {
-  var keyIndices = [];
-  var i = 0,
-      potentialKeys = [];
+/*
+--- Day 15: Timing is Everything ---
 
-  var _loop = function _loop() {
-    potentialKeys = potentialKeys.filter(function (k) {
-      return k !== null;
-    }).filter(function (_ref) {
-      var index = _ref.index;
-      return index + 1000 >= i;
-    });
-    var hash = hashMethod(salt + i);
-    potentialKeys.forEach(function (_ref2, j) {
-      var triple = _ref2.triple,
-          index = _ref2.index;
+The halls open into an interior plaza containing a large kinetic sculpture. The sculpture is in a sealed enclosure and seems to involve a set of identical spherical capsules that are carried to the top and allowed to bounce through the maze of spinning pieces.
 
-      if (hash.includes(triple.repeat(5))) {
-        keyIndices.push(index);
-        keyIndices.sort(function (x, y) {
-          return x - y;
-        });
-        potentialKeys[j] = null;
-        console.log('Found ' + keyIndices.length + ' keys.');
-      }
-    });
-    var maybeTriple = getTripleOrNull(hash);
-    if (maybeTriple) {
-      potentialKeys.push({ index: i, triple: maybeTriple });
+Part of the sculpture is even interactive! When a button is pressed, a capsule is dropped and tries to fall through slots in a set of rotating discs to finally go through a little hole at the bottom and come out of the sculpture. If any of the slots aren't aligned with the capsule as it passes, the capsule bounces off the disc and soars away. You feel compelled to get one of those capsules.
+
+The discs pause their motion each second and come in different sizes; they seem to each have a fixed number of positions at which they stop. You decide to call the position with the slot 0, and count up for each position it reaches next.
+
+Furthermore, the discs are spaced out so that after you push the button, one second elapses before the first disc is reached, and one second elapses as the capsule passes from one disk to the one below it. So, if you push the button at time=100, then the capsule reaches the top disc at time=101, the second disc at time=102, the third disc at time=103, and so on.
+
+The button will only drop a capsule at an integer time - no fractional seconds allowed.
+
+For example, at time=0, suppose you see the following arrangement:
+
+Disc #1 has 5 positions; at time=0, it is at position 4.
+Disc #2 has 2 positions; at time=0, it is at position 1.
+If you press the button exactly at time=0, the capsule would start to fall; it would reach the first disc at time=1. Since the first disc was at position 4 at time=0, by time=1 it has ticked one position forward. As a five-position disc, the next position is 0, and the capsule falls through the slot.
+
+Then, at time=2, the capsule reaches the second disc. The second disc has ticked forward two positions at this point: it started at position 1, then continued to position 0, and finally ended up at position 1 again. Because there's only a slot at position 0, the capsule bounces away.
+
+If, however, you wait until time=5 to push the button, then when the capsule reaches each disc, the first disc will have ticked forward 5+1 = 6 times (to position 0), and the second disc will have ticked forward 5+2 = 7 times (also to position 0). In this case, the capsule would fall through the discs and come out of the machine.
+
+However, your situation has more than two discs; you've noted their positions in your puzzle input. What is the first time you can press the button to get a capsule?
+
+Your puzzle answer was 317371.
+
+--- Part Two ---
+
+After getting the first capsule (it contained a star! what great fortune!), the machine detects your success and begins to rearrange itself.
+
+When it's done, the discs are back in their original configuration as if it were time=0 again, but a new disc with 11 positions and starting at position 0 has appeared exactly one second below the previously-bottom disc.
+
+With this new disc, and counting again starting from time=0 with the configuration in your puzzle input, what is the first time you can press the button to get another capsule?
+
+Your puzzle answer was 2080951.
+*/
+
+function firstWinningTime(discs) {
+  var t = 0,
+      step = 1;
+  discs.forEach(function (_ref) {
+    var delay = _ref.delay,
+        positions = _ref.positions,
+        start = _ref.start;
+
+    while ((start + t + delay) % positions) {
+      t += step;
     }
-    i++;
-  };
-
-  while (keyIndices.length < n - 1 || i < keyIndices[n] + 1000) {
-    _loop();
-  }
-  return keyIndices[n];
-}
-
-function part1$13(input) {
-  return indexOfKey(63, input, MD5.hash);
-}
-
-function part2$13(input) {
-  return indexOfKey(63, input, function (s) {
-    var hash = s;
-    for (var i = 0; i < 2017; i++) {
-      hash = MD5.hash(hash);
-    }
-    return hash;
+    step *= positions;
   });
+  return t;
 }
 
-var input14 = "qzyelonm"
+function part1$14(input) {
+  return firstWinningTime(input);
+}
+
+function part2$14(input) {
+  var newDisc = { "delay": 7, "positions": 11, "start": 0 };
+  return firstWinningTime([].concat(toConsumableArray(input), [newDisc]));
+}
+
+var input15 = [
+  { "delay": 1, "positions": 17, "start": 1 },
+  { "delay": 2, "positions": 7, "start": 0 },
+  { "delay": 3, "positions": 19, "start": 2 },
+  { "delay": 4, "positions": 5, "start": 0 },
+  { "delay": 5, "positions": 3, "start": 0 },
+  { "delay": 6, "positions": 13, "start": 5 }
+]
 ;
 
 // console.log("--- DAY 01 ---");
@@ -1752,10 +1769,15 @@ var input14 = "qzyelonm"
 // console.log(`solution: ${day13.part1(input13)}\n\n`);
 // console.log("--- part 2 ---");
 // console.log(`solution: ${day13.part2(input13)}\n\n`);
-console.log("--- DAY 14 ---");
+// console.log("--- DAY 14 ---");
+// console.log("--- part 1 ---");
+// console.log(`solution: ${day14.part1(input14)}\n\n`);
+// console.log("--- part 2 ---");
+// console.log(`solution: ${day14.part2(input14)}\n\n`);
+console.log("--- DAY 15 ---");
 console.log("--- part 1 ---");
-console.log("solution: " + part1$13(input14) + "\n\n");
+console.log("solution: " + part1$14(input15) + "\n\n");
 console.log("--- part 2 ---");
-console.log("solution: " + part2$13(input14) + "\n\n");
+console.log("solution: " + part2$14(input15) + "\n\n");
 
 }());
