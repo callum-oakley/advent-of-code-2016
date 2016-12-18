@@ -73,8 +73,8 @@ import MD5 from '../node_modules/md5-es/src/MD5.js';
 
 const directions = ["U", "D", "L", "R"];
 
-/* Returns true iff we hit a door by moving in the given direction from the
-  given [x, y] position. */
+/* Returns true if and only if we hit a door by moving in the given direction
+  from the given [x, y] position. */
 function isDoor([x, y], direction) {
   if (x === 0 && direction === "L") { return false; }
   if (x === 3 && direction === "R") { return false; }
@@ -84,9 +84,7 @@ function isDoor([x, y], direction) {
 }
 
 class Maze {
-  constructor(pass) {
-    this.pass = pass;
-  }
+  constructor(pass) { this.pass = pass; }
 
   validNextMoves({ position, path }) {
     const hash = MD5.hash(this.pass + path);
@@ -109,16 +107,19 @@ function findPaths(maze, firstOnly = false) {
     states = states
       .map(s => maze.validNextMoves(s).map(d => move(s, d)))
       .reduce((x, y) => [...x, ...y])
-      .forEach(({ position: [x, y], path }) =>
-        if (x === 3 && y === 0) { final.push(path); })
-      .filter(({ position: [x, y] }) => x !== 3 || y !== 0);
+      .filter(({ position: [x, y], path }) => {
+        if (x === 3 && y === 0) {
+          // SIDE EFFECT: Record elements that we’re filtering out in final.
+          final.push(path);
+          return false;
+        }
+        return true;
+      });
   }
   return final;
 }
 
-export function part1(input) {
-  return findPaths(new Maze(input), true)[0];
-}
+export function part1(input) { return findPaths(new Maze(input), true)[0]; }
 
 export function part2(input) {
   const paths = findPaths(new Maze(input));

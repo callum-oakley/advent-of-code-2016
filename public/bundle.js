@@ -1846,8 +1846,8 @@ Your puzzle answer was 706.
 
 var directions = ["U", "D", "L", "R"];
 
-/* Returns true iff we hit a door by moving in the given direction from the
-  given [x, y] position. */
+/* Returns true if and only if we hit a door by moving in the given direction
+  from the given [x, y] position. */
 function isDoor(_ref, direction) {
   var _ref2 = slicedToArray(_ref, 2),
       x = _ref2[0],
@@ -1871,7 +1871,6 @@ function isDoor(_ref, direction) {
 var Maze$1 = function () {
   function Maze(pass) {
     classCallCheck(this, Maze);
-
     this.pass = pass;
   }
 
@@ -1931,6 +1930,7 @@ function findPaths(maze) {
           path = _ref5.path;
 
       if (x === 3 && y === 0) {
+        // SIDE EFFECT: Record elements that we’re filtering out in final.
         final.push(path);
         return false;
       }
