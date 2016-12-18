@@ -109,13 +109,9 @@ function findPaths(maze, firstOnly = false) {
     states = states
       .map(s => maze.validNextMoves(s).map(d => move(s, d)))
       .reduce((x, y) => [...x, ...y])
-      .filter(({ position: [x, y], path }) => {
-        if (x === 3 && y === 0) {
-          final.push(path);
-          return false;
-        }
-        return true;
-      });
+      .forEach(({ position: [x, y], path }) =>
+        if (x === 3 && y === 0) { final.push(path); })
+      .filter(({ position: [x, y] }) => x !== 3 || y !== 0);
   }
   return final;
 }
