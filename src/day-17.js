@@ -71,6 +71,8 @@ Your puzzle answer was 706.
 
 import MD5 from '../node_modules/md5-es/src/MD5.js';
 
+function is([a, b], [c, d]) { return a === c && b === d; }
+
 const directions = ["U", "D", "L", "R"];
 
 /* Returns true if and only if we hit a door by moving in the given direction
@@ -107,13 +109,10 @@ function findPaths(maze, firstOnly = false) {
     states = states
       .map(s => maze.validNextMoves(s).map(d => move(s, d)))
       .reduce((x, y) => [...x, ...y])
-      .filter(({ position: [x, y], path }) => {
-        if (x === 3 && y === 0) {
-          // SIDE EFFECT: Record elements that we’re filtering out in final.
-          final.push(path);
-          return false;
-        }
-        return true;
+      .filter(({ position, path }) => {
+        // SIDE EFFECT: Move paths that we are filtering out to final.
+        if (is(position, [3, 0])) { final.push(path); }
+        return !is(position, [3, 0]);
       });
   }
   return final;

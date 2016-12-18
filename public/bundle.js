@@ -1844,14 +1844,26 @@ reaches the vault?
 Your puzzle answer was 706.
 */
 
+function is$1(_ref, _ref2) {
+  var _ref4 = slicedToArray(_ref, 2),
+      a = _ref4[0],
+      b = _ref4[1];
+
+  var _ref3 = slicedToArray(_ref2, 2),
+      c = _ref3[0],
+      d = _ref3[1];
+
+  return a === c && b === d;
+}
+
 var directions = ["U", "D", "L", "R"];
 
 /* Returns true if and only if we hit a door by moving in the given direction
   from the given [x, y] position. */
-function isDoor(_ref, direction) {
-  var _ref2 = slicedToArray(_ref, 2),
-      x = _ref2[0],
-      y = _ref2[1];
+function isDoor(_ref5, direction) {
+  var _ref6 = slicedToArray(_ref5, 2),
+      x = _ref6[0],
+      y = _ref6[1];
 
   if (x === 0 && direction === "L") {
     return false;
@@ -1876,9 +1888,9 @@ var Maze$1 = function () {
 
   createClass(Maze, [{
     key: "validNextMoves",
-    value: function validNextMoves(_ref3) {
-      var position = _ref3.position,
-          path = _ref3.path;
+    value: function validNextMoves(_ref7) {
+      var position = _ref7.position,
+          path = _ref7.path;
 
       var hash = MD5.hash(this.pass + path);
       // We make use of the convenient fact that "i" < "a" for any digit i.
@@ -1890,11 +1902,11 @@ var Maze$1 = function () {
   return Maze;
 }();
 
-function move$2(_ref4, direction) {
-  var _ref4$position = slicedToArray(_ref4.position, 2),
-      x = _ref4$position[0],
-      y = _ref4$position[1],
-      path = _ref4.path;
+function move$2(_ref8, direction) {
+  var _ref8$position = slicedToArray(_ref8.position, 2),
+      x = _ref8$position[0],
+      y = _ref8$position[1],
+      path = _ref8.path;
 
   if (direction === "U") {
     y++;
@@ -1923,18 +1935,15 @@ function findPaths(maze) {
       });
     }).reduce(function (x, y) {
       return [].concat(toConsumableArray(x), toConsumableArray(y));
-    }).filter(function (_ref5) {
-      var _ref5$position = slicedToArray(_ref5.position, 2),
-          x = _ref5$position[0],
-          y = _ref5$position[1],
-          path = _ref5.path;
+    }).filter(function (_ref9) {
+      var position = _ref9.position,
+          path = _ref9.path;
 
-      if (x === 3 && y === 0) {
-        // SIDE EFFECT: Record elements that we’re filtering out in final.
+      // SIDE EFFECT: Move paths that we are filtering out to final.
+      if (is$1(position, [3, 0])) {
         final.push(path);
-        return false;
       }
-      return true;
+      return !is$1(position, [3, 0]);
     });
   }
   return final;
