@@ -1773,39 +1773,183 @@ function dragon(data) {
   return data + "0" + rotated;
 }
 
-function fillDisk(diskLength, initialState) {
-  var data = initialState;
-  while (data.length < diskLength) {
-    data = dragon(data);
+/*
+--- Day 17: Two Steps Forward ---
+
+You're trying to access a secure vault protected by a 4x4 grid of small rooms
+connected by doors. You start in the top-left room (marked S), and you can
+access the vault (marked V) once you reach the bottom-right room:
+
+#########
+######### #S| | | # #-#-#-#-# # | | | # #-#-#-#-# # | | | # #-#-#-#-# # | | |   #######
+#########
+V Fixed walls are marked with #, and doors are marked with - or |.
+
+The doors in your current room are either open or closed (and locked) based on
+the hexadecimal MD5 hash of a passcode (your puzzle input) followed by a
+sequence of uppercase characters representing the path you have taken so far (U
+for up, D for down, L for left, and R for right).
+
+Only the first four characters of the hash are used; they represent,
+respectively, the doors up, down, left, and right from your current position.
+Any b, c, d, e, or f means that the corresponding door is open; any other
+character (any number or a) means that the corresponding door is closed and
+locked.
+
+To access the vault, all you need to do is reach the bottom-right room; reaching
+this room opens the vault and all doors in the maze.
+
+For example, suppose the passcode is hijkl. Initially, you have taken no steps,
+and so your path is empty: you simply find the MD5 hash of hijkl alone. The
+first four characters of this hash are ced9, which indicate that up is open (c),
+down is open (e), left is open (d), and right is closed and locked (9). Because
+you start in the top-left corner, there are no "up" or "left" doors to be open,
+so your only choice is down.
+
+Next, having gone only one step (down, or D), you find the hash of hijklD. This
+produces f2bc, which indicates that you can go back up, left (but that's a
+wall), or right. Going right means hashing hijklDR to get 5745 - all doors
+closed and locked. However, going up instead is worthwhile: even though it
+returns you to the room you started in, your path would then be DU, opening a
+different set of doors.
+
+After going DU (and then hashing hijklDU to get 528e), only the right door is
+open; after going DUR, all doors lock. (Fortunately, your actual passcode is not
+hijkl).
+
+Passcodes actually used by Easter Bunny Vault Security do allow access to the
+vault if you know the right path. For example:
+
+If your passcode were ihgpwlah, the shortest path would be DDRRRD. With
+kglvqrro, the shortest path would be DDUDRLRRUDRD. With ulqzkmiv, the shortest
+would be DRURDRUDDLLDLUURRDULRLDUUDDDRR. Given your vault's passcode, what is
+the shortest path (the actual path, not just the length) to reach the vault?
+
+Your puzzle answer was RRRLDRDUDD.
+
+--- Part Two ---
+
+You're curious how robust this security solution really is, and so you decide to
+find longer and longer paths which still provide access to the vault. You
+remember that paths always end the first time they reach the bottom-right room
+(that is, they can never pass through it, only end in it).
+
+For example:
+
+If your passcode were ihgpwlah, the longest path would take 370 steps. With
+kglvqrro, the longest path would be 492 steps long. With ulqzkmiv, the longest
+path would be 830 steps long. What is the length of the longest path that
+reaches the vault?
+
+Your puzzle answer was 706.
+*/
+
+var directions = ["U", "D", "L", "R"];
+
+/* Returns true iff we hit a door by moving in the given direction from the
+  given [x, y] position. */
+function isDoor(_ref, direction) {
+  var _ref2 = slicedToArray(_ref, 2),
+      x = _ref2[0],
+      y = _ref2[1];
+
+  if (x === 0 && direction === "L") {
+    return false;
   }
-  return data.slice(0, diskLength);
+  if (x === 3 && direction === "R") {
+    return false;
+  }
+  if (y === 0 && direction === "D") {
+    return false;
+  }
+  if (y === 3 && direction === "U") {
+    return false;
+  }
+  return true;
 }
 
-function checksum$1(data) {
-  var check = data;
-  while (check.length % 2 === 0) {
-    var newCheck = "";
-    for (var i = 0; i < check.length - 1; i += 2) {
-      newCheck += check[i] === check[i + 1] ? "1" : "0";
+var Maze$1 = function () {
+  function Maze(pass) {
+    classCallCheck(this, Maze);
+
+    this.pass = pass;
+  }
+
+  createClass(Maze, [{
+    key: "validNextMoves",
+    value: function validNextMoves(_ref3) {
+      var position = _ref3.position,
+          path = _ref3.path;
+
+      var hash = MD5.hash(this.pass + path);
+      // We make use of the convenient fact that "i" < "a" for any digit i.
+      return directions.filter(function (d, i) {
+        return hash[i] > "a" && isDoor(position, d);
+      });
     }
-    check = newCheck;
+  }]);
+  return Maze;
+}();
+
+function move$2(_ref4, direction) {
+  var _ref4$position = slicedToArray(_ref4.position, 2),
+      x = _ref4$position[0],
+      y = _ref4$position[1],
+      path = _ref4.path;
+
+  if (direction === "U") {
+    y++;
   }
-  return check;
+  if (direction === "D") {
+    y--;
+  }
+  if (direction === "L") {
+    x--;
+  }
+  if (direction === "R") {
+    x++;
+  }
+  return { position: [x, y], path: path + direction };
 }
 
-function part1$15(input) {
-  var data = fillDisk(272, input);
-  return checksum$1(data);
+function findPaths(maze) {
+  var firstOnly = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  var states = [{ position: [0, 3], path: [] }],
+      final = [];
+  while (states.length > 0 && (!firstOnly || final.length === 0)) {
+    states = states.map(function (s) {
+      return maze.validNextMoves(s).map(function (d) {
+        return move$2(s, d);
+      });
+    }).reduce(function (x, y) {
+      return [].concat(toConsumableArray(x), toConsumableArray(y));
+    }).filter(function (_ref5) {
+      var _ref5$position = slicedToArray(_ref5.position, 2),
+          x = _ref5$position[0],
+          y = _ref5$position[1],
+          path = _ref5.path;
+
+      if (x === 3 && y === 0) {
+        final.push(path);
+        return false;
+      }
+      return true;
+    });
+  }
+  return final;
 }
 
-function part2$15(input) {
-  /* This can definitely be done a lot faster, but as it stands runs in 14s and
-    I'm too far behind to spend time on unnecessary optimisation! */
-  var data = fillDisk(35651584, input);
-  return checksum$1(data);
+function part1$16(input) {
+  return findPaths(new Maze$1(input), true)[0];
 }
 
-var input16 = "10010000000110000"
+function part2$16(input) {
+  var paths = findPaths(new Maze$1(input));
+  return paths[paths.length - 1].length;
+}
+
+var input17 = "qtetzkpl"
 ;
 
 var time = void 0;
@@ -1913,12 +2057,19 @@ var time = void 0;
 // console.log("--- part 2 ---");
 // time = Date.now();
 // console.log(`solution: ${day15.part2(input15)}, time: ${Date.now() - time}ms\n\n`);
-console.log("--- DAY 16 ---");
+// console.log("--- DAY 16 ---");
+// time = Date.now();
+// console.log("--- part 1 ---");
+// console.log(`solution: ${day16.part1(input16)}, time: ${Date.now() - time}ms\n\n`);
+// console.log("--- part 2 ---");
+// time = Date.now();
+// console.log(`solution: ${day16.part2(input16)}, time: ${Date.now() - time}ms\n\n`);
+console.log("--- DAY 17 ---");
 time = Date.now();
 console.log("--- part 1 ---");
-console.log("solution: " + part1$15(input16) + ", time: " + (Date.now() - time) + "ms\n\n");
+console.log("solution: " + part1$16(input17) + ", time: " + (Date.now() - time) + "ms\n\n");
 console.log("--- part 2 ---");
 time = Date.now();
-console.log("solution: " + part2$15(input16) + ", time: " + (Date.now() - time) + "ms\n\n");
+console.log("solution: " + part2$16(input17) + ", time: " + (Date.now() - time) + "ms\n\n");
 
 }());
