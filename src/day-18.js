@@ -63,21 +63,14 @@ How many safe tiles are there in a total of 400000 rows?
 Your puzzle answer was 19984714.
 */
 
-function tile(left = ".", center, right = ".") {
-  if (left === "^" && center === "^" && right === ".") { return "^"; }
-  if (left === "." && center === "^" && right === "^") { return "^"; }
-  if (left === "^" && center === "." && right === ".") { return "^"; }
-  if (left === "." && center === "." && right === "^") { return "^"; }
-  return ".";
-}
+// The rule simplifies to just checking if left === right.
+function tile(left = ".", right = ".") { return left === right ? "." : "^"; }
 
-function calculateRow(row) {
-  return row.map((_, i) => tile(row[i - 1], row[i], row[i + 1]));
-}
+function row(r) { return r.map((_, i) => tile(r[i - 1], r[i + 1])); }
 
 function expand(startRow, size) {
   const map = [startRow];
-  while (map.length < size) { map.push(calculateRow(map[map.length - 1])); }
+  while (map.length < size) { map.push(row(map[map.length - 1])); }
   return map;
 }
 

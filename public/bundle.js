@@ -1988,36 +1988,23 @@ How many safe tiles are there in a total of 400000 rows?
 Your puzzle answer was 19984714.
 */
 
+// The rule simplifies to just checking if left === right.
 function tile() {
   var left = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ".";
-  var center = arguments[1];
-  var right = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ".";
-
-  if (left === "^" && center === "^" && right === ".") {
-    return "^";
-  }
-  if (left === "." && center === "^" && right === "^") {
-    return "^";
-  }
-  if (left === "^" && center === "." && right === ".") {
-    return "^";
-  }
-  if (left === "." && center === "." && right === "^") {
-    return "^";
-  }
-  return ".";
+  var right = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ".";
+  return left === right ? "." : "^";
 }
 
-function calculateRow(row) {
-  return row.map(function (_, i) {
-    return tile(row[i - 1], row[i], row[i + 1]);
+function row(r) {
+  return r.map(function (_, i) {
+    return tile(r[i - 1], r[i + 1]);
   });
 }
 
 function expand(startRow, size) {
   var map = [startRow];
   while (map.length < size) {
-    map.push(calculateRow(map[map.length - 1]));
+    map.push(row(map[map.length - 1]));
   }
   return map;
 }
@@ -2047,127 +2034,127 @@ var time = void 0;
 // console.log("--- DAY 01 ---");
 // console.log("--- part 1 ---");
 // time = Date.now();
-// console.log(`solution: ${day01.part1(input01)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day01.part1(input01)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day01.part2(input01)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day01.part2(input01)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 02 ---");
 // console.log("--- part 1 ---");
 // time = Date.now();
-// console.log(`solution: ${day02.part1(input02)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day02.part1(input02)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day02.part2(input02)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day02.part2(input02)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 03 ---");
 // console.log("--- part 1 ---");
 // time = Date.now();
-// console.log(`solution: ${day03.part1(input03)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day03.part1(input03)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day03.part2(input03)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day03.part2(input03)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 04 ---");
 // console.log("--- part 1 ---");
 // time = Date.now();
-// console.log(`solution: ${day04.part1(input04)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day04.part1(input04)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day04.part2(input04)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day04.part2(input04)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 05 ---");
 // console.log("--- part 1 ---");
 // time = Date.now();
-// console.log(`solution: ${day05.part1(input05)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day05.part1(input05)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day05.part2(input05)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day05.part2(input05)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 06 ---");
 // console.log("--- part 1 ---");
 // time = Date.now();
-// console.log(`solution: ${day06.part1(input06)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day06.part1(input06)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day06.part2(input06)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day06.part2(input06)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 07 ---");
 // console.log("--- part 1 ---");
 // time = Date.now();
-// console.log(`solution: ${day07.part1(input07)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day07.part1(input07)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day07.part2(input07)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day07.part2(input07)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 08 ---");
 // console.log("--- part 1 ---");
 // time = Date.now();
-// console.log(`solution: ${day08.part1(input08)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day08.part1(input08)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day08.part2(input08)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day08.part2(input08)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 09 ---");
 // console.log("--- part 1 ---");
 // time = Date.now();
-// console.log(`solution: ${day09.part1(input09)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day09.part1(input09)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day09.part2(input09)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day09.part2(input09)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 10 ---");
 // console.log("--- part 1 ---");
 // time = Date.now();
-// console.log(`solution: ${day10.part1(input10)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day10.part1(input10)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day10.part2(input10)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day10.part2(input10)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 11 ---");
 // console.log("--- part 1 ---");
 // time = Date.now();
-// console.log(`solution: ${day11.part1(input11)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day11.part1(input11)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day11.part2(input11)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day11.part2(input11)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 12 ---");
 // console.log("--- part 1 ---");
 // time = Date.now();
-// console.log(`solution: ${day12.part1(input12)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day12.part1(input12)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day12.part2(input12)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day12.part2(input12)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 13 ---");
 // console.log("--- part 1 ---");
 // time = Date.now();
-// console.log(`solution: ${day13.part1(input13)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day13.part1(input13)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day13.part2(input13)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day13.part2(input13)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 14 ---");
 // console.log("--- part 1 ---");
 // time = Date.now();
-// console.log(`solution: ${day14.part1(input14)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day14.part1(input14)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
-// console.log(`solution: ${day14.part2(input14)}\n\n`);
+// console.log(`solution: ${day14.part2(input14)}\n`);
 // console.log("--- DAY 15 ---");
 // time = Date.now();
 // console.log("--- part 1 ---");
-// console.log(`solution: ${day15.part1(input15)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day15.part1(input15)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day15.part2(input15)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day15.part2(input15)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 16 ---");
 // time = Date.now();
 // console.log("--- part 1 ---");
-// console.log(`solution: ${day16.part1(input16)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day16.part1(input16)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day16.part2(input16)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day16.part2(input16)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- DAY 17 ---");
 // time = Date.now();
 // console.log("--- part 1 ---");
-// console.log(`solution: ${day17.part1(input17)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day17.part1(input17)}, time: ${Date.now() - time}ms\n`);
 // console.log("--- part 2 ---");
 // time = Date.now();
-// console.log(`solution: ${day17.part2(input17)}, time: ${Date.now() - time}ms\n\n`);
+// console.log(`solution: ${day17.part2(input17)}, time: ${Date.now() - time}ms\n`);
 console.log("--- DAY 18 ---");
 time = Date.now();
 console.log("--- part 1 ---");
-console.log("solution: " + part1$17(input18) + ", time: " + (Date.now() - time) + "ms\n\n");
+console.log("solution: " + part1$17(input18) + ", time: " + (Date.now() - time) + "ms\n");
 console.log("--- part 2 ---");
 time = Date.now();
-console.log("solution: " + part2$17(input18) + ", time: " + (Date.now() - time) + "ms\n\n");
+console.log("solution: " + part2$17(input18) + ", time: " + (Date.now() - time) + "ms\n");
 
 }());
