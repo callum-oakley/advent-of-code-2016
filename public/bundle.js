@@ -1989,45 +1989,48 @@ Your puzzle answer was 19984714.
 */
 
 // The rule simplifies to just checking if left === right.
-function tile() {
-  var left = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ".";
-  var right = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ".";
-  return left === right ? "." : "^";
-}
 
-function row(r) {
-  return r.map(function (_, i) {
-    return tile(r[i - 1], r[i + 1]);
-  });
-}
+var Elves = function () {
+  function Elves(n) {
+    classCallCheck(this, Elves);
 
-function expand(startRow, size) {
-  var map = [startRow];
-  while (map.length < size) {
-    map.push(row(map[map.length - 1]));
+    for (var position = 1; position <= n; position++) {
+      this[position] = { presents: 1, left: position % n + 1 };
+    }
+    this.currentPosition = 1;
+    this.size = n;
   }
-  return map;
+
+  createClass(Elves, [{
+    key: "stealToTheLeft",
+    value: function stealToTheLeft(position) {
+      var elf = this[this.currentPosition],
+          nextElf = this[elf.left];
+      elf.presents += nextElf.presents;
+      elf.left = nextElf.left;
+      this.currentPosition = elf.left;
+      this.size--;
+    }
+  }, {
+    key: "currentElf",
+    get: function get() {
+      return this[this.currentPosition];
+    }
+  }]);
+  return Elves;
+}();
+
+function part1$18(input) {
+  var elves = new Elves(input);
+  while (elves.size > 1) {
+    elves.stealToTheLeft();
+  }
+  return elves.currentPosition;
 }
 
-function countSafeTiles(map) {
-  return map.map(function (r) {
-    return r.filter(function (x) {
-      return x === ".";
-    }).length;
-  }).reduce(function (x, y) {
-    return x + y;
-  });
-}
+function part2$18(input) {}
 
-function part1$17(input) {
-  return countSafeTiles(expand(input, 40));
-}
-
-function part2$17(input) {
-  return countSafeTiles(expand(input, 400000));
-}
-
-var input18 = [".", "^", ".", "^", ".", ".", "^", ".", ".", ".", ".", ".", ".", "^", "^", "^", "^", "^", ".", ".", ".", "^", "^", "^", ".", ".", ".", "^", ".", ".", ".", "^", ".", ".", ".", ".", "^", "^", ".", "^", ".", ".", ".", "^", ".", "^", "^", "^", "^", ".", ".", ".", ".", "^", ".", ".", ".", "^", "^", ".", "^", "^", "^", ".", ".", ".", "^", "^", "^", "^", ".", "^", "^", ".", "^", ".", "^", "^", ".", ".", "^", ".", "^", "^", "^", ".", ".", "^", "^", "^", "^", "^", "^", ".", "^", "^", "^", ".", ".", "^"]
+var input19 = 3017957
 ;
 
 var time = void 0;
@@ -2149,12 +2152,19 @@ var time = void 0;
 // console.log("--- part 2 ---");
 // time = Date.now();
 // console.log(`solution: ${day17.part2(input17)}, time: ${Date.now() - time}ms\n`);
-console.log("--- DAY 18 ---");
+// console.log("--- DAY 18 ---");
+// time = Date.now();
+// console.log("--- part 1 ---");
+// console.log(`solution: ${day18.part1(input18)}, time: ${Date.now() - time}ms\n`);
+// console.log("--- part 2 ---");
+// time = Date.now();
+// console.log(`solution: ${day18.part2(input18)}, time: ${Date.now() - time}ms\n`);
+console.log("--- DAY 19 ---");
 time = Date.now();
 console.log("--- part 1 ---");
-console.log("solution: " + part1$17(input18) + ", time: " + (Date.now() - time) + "ms\n");
+console.log("solution: " + part1$18(input19) + ", time: " + (Date.now() - time) + "ms\n");
 console.log("--- part 2 ---");
 time = Date.now();
-console.log("solution: " + part2$17(input18) + ", time: " + (Date.now() - time) + "ms\n");
+console.log("solution: " + part2$18(input19) + ", time: " + (Date.now() - time) + "ms\n");
 
 }());
