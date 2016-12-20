@@ -60,15 +60,16 @@ class Elves {
     for (let i = 1; i <= n; i++) { this[i].left = this[i % n + 1]; }
     this.size = n;
     this.top = this[1];
+    /* `bottom` doesn’t point to the elf directly opposite top, but rather the
+      elf to the right of the elf directly opposite top. We need access to both
+      and moving left is easy but moving right is hard. */
     this.bottom = this[(Math.floor(this.size / 2) - 1) % this.size + 1];
   }
 
-  /* `rightOfVictim` is the elf to the right of the actual victim, we take this
-    rather than the actual victim since we need access to both and it is easier
-    to move left than right. */
+  // Likewise, `rightOfVictim` is the elf to the right of the actual victim.
   stealFrom(rightOfVictim) {
     const actualVictim = rightOfVictim.left;
-    // Remove the actual victim from the table by orphaning them.
+    // “Remove” the actual victim from the table by orphaning them.
     rightOfVictim.left = actualVictim.left;
     this.size--;
     this.top = this.top.left;
