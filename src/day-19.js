@@ -56,38 +56,38 @@ Your puzzle input was 3017957.
 
 class Elves {
   constructor(n) {
-    for (let i = 1; i <= n; i++) { this[i] = { left: i % n + 1 }; }
+    for (let i = 1; i <= n; i++) { this[i] = { id: i }; }
+    for (let i = 1; i <= n; i++) { this[i].left = this[i % n + 1]; }
     this.size = n;
-    this.top = 1;
-    this.bottom = (Math.floor(this.size / 2) - 1) % this.size + 1;
+    this.top = this[1];
+    this.bottom = this[(Math.floor(this.size / 2) - 1) % this.size + 1];
   }
 
-  get topElf() { return this[this.top]; }
-
-  get bottomElf() { return this[this.bottom]; }
-
-  /* `right` is the elf to the right of the victim, since their `left` pointer
-    needs to be updated. */
-  stealFrom(victim, right = this.topElf) {
-    right.left = victim.left;
-    this.top = this.topElf.left;
+  /* `rightOfVictim` is the elf to the right of the actual victim, we take this
+    rather than the actual victim since we need access to both and it is easier
+    to move left than right. */
+  stealFrom(rightOfVictim) {
+    const actualVictim = rightOfVictim.left;
+    // Remove the actual victim from the table by orphaning them.
+    rightOfVictim.left = actualVictim.left;
     this.size--;
-    if (this.size % 2 === 0) { this.bottom = this.bottomElf.left; }
+    this.top = this.top.left;
+    if (this.size % 2 === 0) { this.bottom = this.bottom.left; }
   }
 
-  stealToTheLeft() { this.stealFrom(this[this.topElf.left]); }
+  stealToTheLeft() { this.stealFrom(this.top.left, this.top); }
 
-  stealAcross() { this.stealFrom(this[this.bottomElf.left], this.bottomElf); }
+  stealAcross() { this.stealFrom(this.bottom.left, this.bottom); }
 }
 
 export function part1(input) {
   const elves = new Elves(input);
   while (elves.size > 1) { elves.stealToTheLeft(); };
-  return elves.top;
+  return elves.top.id;
 }
 
 export function part2(input) {
   const elves = new Elves(input);
   while (elves.size > 1) { elves.stealAcross(); };
-  return elves.top;
+  return elves.top.id;
 }

@@ -2051,48 +2051,42 @@ var Elves = function () {
     classCallCheck(this, Elves);
 
     for (var i = 1; i <= n; i++) {
-      this[i] = { left: i % n + 1 };
+      this[i] = { id: i };
+    }
+    for (var _i = 1; _i <= n; _i++) {
+      this[_i].left = this[_i % n + 1];
     }
     this.size = n;
-    this.top = 1;
-    this.bottom = (Math.floor(this.size / 2) - 1) % this.size + 1;
+    this.top = this[1];
+    this.bottom = this[(Math.floor(this.size / 2) - 1) % this.size + 1];
   }
+
+  /* `rightOfVictim` is the elf to the right of the actual victim, we take this
+    rather than the actual victim since we need access to both and it is easier
+    to move left than right. */
+
 
   createClass(Elves, [{
     key: "stealFrom",
-
-
-    /* `right` is the elf to the right of the victim, since their `left` pointer
-      needs to be updated. */
-    value: function stealFrom(victim) {
-      var right = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.topElf;
-
-      right.left = victim.left;
-      this.top = this.topElf.left;
+    value: function stealFrom(rightOfVictim) {
+      var actualVictim = rightOfVictim.left;
+      // Remove the actual victim from the table by orphaning them.
+      rightOfVictim.left = actualVictim.left;
       this.size--;
+      this.top = this.top.left;
       if (this.size % 2 === 0) {
-        this.bottom = this.bottomElf.left;
+        this.bottom = this.bottom.left;
       }
     }
   }, {
     key: "stealToTheLeft",
     value: function stealToTheLeft() {
-      this.stealFrom(this[this.topElf.left]);
+      this.stealFrom(this.top.left, this.top);
     }
   }, {
     key: "stealAcross",
     value: function stealAcross() {
-      this.stealFrom(this[this.bottomElf.left], this.bottomElf);
-    }
-  }, {
-    key: "topElf",
-    get: function get() {
-      return this[this.top];
-    }
-  }, {
-    key: "bottomElf",
-    get: function get() {
-      return this[this.bottom];
+      this.stealFrom(this.bottom.left, this.bottom);
     }
   }]);
   return Elves;
@@ -2103,7 +2097,7 @@ function part1$18(input) {
   while (elves.size > 1) {
     elves.stealToTheLeft();
   }
-  return elves.top;
+  return elves.top.id;
 }
 
 function part2$18(input) {
@@ -2111,7 +2105,7 @@ function part2$18(input) {
   while (elves.size > 1) {
     elves.stealAcross();
   }
-  return elves.top;
+  return elves.top.id;
 }
 
 var input19 = 3017957
