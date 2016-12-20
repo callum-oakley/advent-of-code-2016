@@ -1990,31 +1990,109 @@ Your puzzle answer was 19984714.
 
 // The rule simplifies to just checking if left === right.
 
+/*
+--- Day 19: An Elephant Named Joseph ---
+
+The Elves contact you over a highly secure emergency channel. Back at the North
+Pole, the Elves are busy misunderstanding White Elephant parties.
+
+Each Elf brings a present. They all sit in a circle, numbered starting with
+position 1. Then, starting with the first Elf, they take turns stealing all the
+presents from the Elf to their left. An Elf with no presents is removed from the
+circle and does not take turns.
+
+For example, with five Elves (numbered 1 to 5):
+
+  1 5   2 4 3 Elf 1 takes Elf 2's present. Elf 2 has no presents and is skipped.
+  Elf 3 takes Elf 4's present. Elf 4 has no presents and is also skipped. Elf 5
+  takes Elf 1's two presents. Neither Elf 1 nor Elf 2 have any presents, so both
+  are skipped. Elf 3 takes Elf 5's three presents. So, with five Elves, the Elf
+  that sits starting in position 3 gets all the presents.
+
+With the number of Elves given in your puzzle input, which Elf gets all the
+presents?
+
+Your puzzle answer was 1841611.
+
+--- Part Two ---
+
+Realizing the folly of their present-exchange rules, the Elves agree to instead
+steal presents from the Elf directly across the circle. If two Elves are across
+the circle, the one on the left (from the perspective of the stealer) is stolen
+from. The other rules remain unchanged: Elves with no presents are removed from
+the circle entirely, and the other elves move in slightly to keep the circle
+evenly spaced.
+
+For example, with five Elves (again numbered 1 to 5):
+
+The Elves sit in a circle; Elf 1 goes first: 1 5   2 4 3 Elves 3 and 4 are
+across the circle; Elf 3's present is stolen, being the one to the left. Elf 3
+leaves the circle, and the rest of the Elves move in: 1           1 5   2  -->
+5   2 4 -          4 Elf 2 steals from the Elf directly across the circle, Elf
+5: 1         1  -   2  -->     2 4         4  Next is Elf 4 who, choosing
+between Elves 1 and 2, steals from Elf 1: -          2   2  --> 4          4
+Finally, Elf 2 steals from Elf 4: 2 -->  2   - So, with five Elves, the Elf that
+sits starting in position 2 gets all the presents.
+
+With the number of Elves given in your puzzle input, which Elf now gets all the
+presents?
+
+Your puzzle answer was 1423634.
+
+Both parts of this puzzle are complete! They provide two gold stars: **
+
+At this point, you should return to your advent calendar and try another puzzle.
+
+Your puzzle input was 3017957.
+*/
+
 var Elves = function () {
   function Elves(n) {
     classCallCheck(this, Elves);
 
-    for (var position = 1; position <= n; position++) {
-      this[position] = { presents: 1, left: position % n + 1 };
+    for (var i = 1; i <= n; i++) {
+      this[i] = { left: i % n + 1 };
     }
-    this.currentPosition = 1;
     this.size = n;
+    this.top = 1;
+    this.bottom = (Math.floor(this.size / 2) - 1) % this.size + 1;
   }
 
   createClass(Elves, [{
-    key: "stealToTheLeft",
-    value: function stealToTheLeft(position) {
-      var elf = this[this.currentPosition],
-          nextElf = this[elf.left];
-      elf.presents += nextElf.presents;
-      elf.left = nextElf.left;
-      this.currentPosition = elf.left;
+    key: "stealFrom",
+
+
+    /* `right` is the elf to the right of the victim, since their `left` pointer
+      needs to be updated. */
+    value: function stealFrom(victim) {
+      var right = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.topElf;
+
+      right.left = victim.left;
+      this.top = this.topElf.left;
       this.size--;
+      if (this.size % 2 === 0) {
+        this.bottom = this.bottomElf.left;
+      }
     }
   }, {
-    key: "currentElf",
+    key: "stealToTheLeft",
+    value: function stealToTheLeft() {
+      this.stealFrom(this[this.topElf.left]);
+    }
+  }, {
+    key: "stealAcross",
+    value: function stealAcross() {
+      this.stealFrom(this[this.bottomElf.left], this.bottomElf);
+    }
+  }, {
+    key: "topElf",
     get: function get() {
-      return this[this.currentPosition];
+      return this[this.top];
+    }
+  }, {
+    key: "bottomElf",
+    get: function get() {
+      return this[this.bottom];
     }
   }]);
   return Elves;
@@ -2025,10 +2103,16 @@ function part1$18(input) {
   while (elves.size > 1) {
     elves.stealToTheLeft();
   }
-  return elves.currentPosition;
+  return elves.top;
 }
 
-function part2$18(input) {}
+function part2$18(input) {
+  var elves = new Elves(input);
+  while (elves.size > 1) {
+    elves.stealAcross();
+  }
+  return elves.top;
+}
 
 var input19 = 3017957
 ;
