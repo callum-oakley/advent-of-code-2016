@@ -75,9 +75,9 @@ class Elves {
     if (this.size % 2 === 0) { this.bottom = this.bottom.left; }
   }
 
-  stealToTheLeft() { this.stealFrom(this.top.left, this.top); }
+  stealToTheLeft() { this.stealFrom(this.top); }
 
-  stealAcross() { this.stealFrom(this.bottom.left, this.bottom); }
+  stealAcross() { this.stealFrom(this.bottom); }
 }
 
 export function part1(input) {

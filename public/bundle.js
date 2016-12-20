@@ -2081,12 +2081,12 @@ var Elves = function () {
   }, {
     key: "stealToTheLeft",
     value: function stealToTheLeft() {
-      this.stealFrom(this.top.left, this.top);
+      this.stealFrom(this.top);
     }
   }, {
     key: "stealAcross",
     value: function stealAcross() {
-      this.stealFrom(this.bottom.left, this.bottom);
+      this.stealFrom(this.bottom);
     }
   }]);
   return Elves;
