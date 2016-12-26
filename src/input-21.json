@@ -1,0 +1,402 @@
+[
+  {
+    "op": "rotate right",
+    "params": [1]
+  },
+  {
+    "op": "swap",
+    "params": [2, 4]
+  },
+  {
+    "op": "rotate based on",
+    "params": ["g"]
+  },
+  {
+    "op": "rotate left",
+    "params": [4]
+  },
+  {
+    "op": "swap",
+    "params": [6, 0]
+  },
+  {
+    "op": "swap",
+    "params": ["h", "a"]
+  },
+  {
+    "op": "swap",
+    "params": ["d", "c"]
+  },
+  {
+    "op": "reverse",
+    "params": [2, 4]
+  },
+  {
+    "op": "swap",
+    "params": [2, 4]
+  },
+  {
+    "op": "swap",
+    "params": ["d", "e"]
+  },
+  {
+    "op": "reverse",
+    "params": [1, 5]
+  },
+  {
+    "op": "swap",
+    "params": ["b", "a"]
+  },
+  {
+    "op": "rotate right",
+    "params": [0]
+  },
+  {
+    "op": "swap",
+    "params": [7, 3]
+  },
+  {
+    "op": "move",
+    "params": [2, 1]
+  },
+  {
+    "op": "reverse",
+    "params": [2, 5]
+  },
+  {
+    "op": "reverse",
+    "params": [4, 7]
+  },
+  {
+    "op": "reverse",
+    "params": [2, 7]
+  },
+  {
+    "op": "swap",
+    "params": ["e", "c"]
+  },
+  {
+    "op": "swap",
+    "params": [1, 7]
+  },
+  {
+    "op": "swap",
+    "params": [5, 7]
+  },
+  {
+    "op": "move",
+    "params": [3, 6]
+  },
+  {
+    "op": "swap",
+    "params": [7, 2]
+  },
+  {
+    "op": "move",
+    "params": [0, 7]
+  },
+  {
+    "op": "swap",
+    "params": [3, 7]
+  },
+  {
+    "op": "reverse",
+    "params": [3, 6]
+  },
+  {
+    "op": "move",
+    "params": [0, 5]
+  },
+  {
+    "op": "swap",
+    "params": ["h", "c"]
+  },
+  {
+    "op": "reverse",
+    "params": [2, 3]
+  },
+  {
+    "op": "swap",
+    "params": [2, 3]
+  },
+  {
+    "op": "move",
+    "params": [4, 0]
+  },
+  {
+    "op": "rotate based on",
+    "params": ["g"]
+  },
+  {
+    "op": "rotate based on",
+    "params": ["g"]
+  },
+  {
+    "op": "reverse",
+    "params": [0, 2]
+  },
+  {
+    "op": "swap",
+    "params": ["e", "d"]
+  },
+  {
+    "op": "reverse",
+    "params": [2, 5]
+  },
+  {
+    "op": "swap",
+    "params": [6, 0]
+  },
+  {
+    "op": "swap",
+    "params": ["a", "g"]
+  },
+  {
+    "op": "swap",
+    "params": [2, 5]
+  },
+  {
+    "op": "reverse",
+    "params": [2, 3]
+  },
+  {
+    "op": "swap",
+    "params": ["b", "d"]
+  },
+  {
+    "op": "reverse",
+    "params": [3, 7]
+  },
+  {
+    "op": "swap",
+    "params": [2, 5]
+  },
+  {
+    "op": "swap",
+    "params": ["d", "b"]
+  },
+  {
+    "op": "reverse",
+    "params": [0, 3]
+  },
+  {
+    "op": "swap",
+    "params": ["e", "g"]
+  },
+  {
+    "op": "rotate based on",
+    "params": ["h"]
+  },
+  {
+    "op": "move",
+    "params": [4, 3]
+  },
+  {
+    "op": "reverse",
+    "params": [0, 6]
+  },
+  {
+    "op": "swap",
+    "params": [4, 1]
+  },
+  {
+    "op": "swap",
+    "params": [6, 4]
+  },
+  {
+    "op": "move",
+    "params": [7, 5]
+  },
+  {
+    "op": "swap",
+    "params": [6, 4]
+  },
+  {
+    "op": "reverse",
+    "params": [5, 6]
+  },
+  {
+    "op": "move",
+    "params": [0, 6]
+  },
+  {
+    "op": "swap",
+    "params": [5, 0]
+  },
+  {
+    "op": "reverse",
+    "params": [2, 5]
+  },
+  {
+    "op": "rotate right",
+    "params": [0]
+  },
+  {
+    "op": "swap",
+    "params": [7, 0]
+  },
+  {
+    "op": "swap",
+    "params": [0, 2]
+  },
+  {
+    "op": "swap",
+    "params": [2, 5]
+  },
+  {
+    "op": "swap",
+    "params": ["h", "c"]
+  },
+  {
+    "op": "rotate left",
+    "params": [1]
+  },
+  {
+    "op": "reverse",
+    "params": [6, 7]
+  },
+  {
+    "op": "swap",
+    "params": ["g", "a"]
+  },
+  {
+    "op": "reverse",
+    "params": [3, 7]
+  },
+  {
+    "op": "move",
+    "params": [2, 4]
+  },
+  {
+    "op": "reverse",
+    "params": [0, 6]
+  },
+  {
+    "op": "rotate based on",
+    "params": ["g"]
+  },
+  {
+    "op": "swap",
+    "params": [0, 6]
+  },
+  {
+    "op": "move",
+    "params": [2, 0]
+  },
+  {
+    "op": "rotate left",
+    "params": [3]
+  },
+  {
+    "op": "reverse",
+    "params": [2, 5]
+  },
+  {
+    "op": "rotate based on",
+    "params": ["a"]
+  },
+  {
+    "op": "reverse",
+    "params": [1, 4]
+  },
+  {
+    "op": "move",
+    "params": [2, 3]
+  },
+  {
+    "op": "rotate right",
+    "params": [2]
+  },
+  {
+    "op": "rotate based on",
+    "params": ["f"]
+  },
+  {
+    "op": "rotate based on",
+    "params": ["f"]
+  },
+  {
+    "op": "swap",
+    "params": ["g", "a"]
+  },
+  {
+    "op": "rotate right",
+    "params": [0]
+  },
+  {
+    "op": "swap",
+    "params": ["f", "h"]
+  },
+  {
+    "op": "swap",
+    "params": ["f", "b"]
+  },
+  {
+    "op": "swap",
+    "params": ["d", "e"]
+  },
+  {
+    "op": "swap",
+    "params": [0, 7]
+  },
+  {
+    "op": "move",
+    "params": [3, 0]
+  },
+  {
+    "op": "swap",
+    "params": [3, 0]
+  },
+  {
+    "op": "rotate right",
+    "params": [4]
+  },
+  {
+    "op": "rotate based on",
+    "params": ["a"]
+  },
+  {
+    "op": "reverse",
+    "params": [0, 7]
+  },
+  {
+    "op": "rotate left",
+    "params": [6]
+  },
+  {
+    "op": "swap",
+    "params": ["d", "h"]
+  },
+  {
+    "op": "reverse",
+    "params": [0, 4]
+  },
+  {
+    "op": "rotate based on",
+    "params": ["f"]
+  },
+  {
+    "op": "move",
+    "params": [5, 3]
+  },
+  {
+    "op": "move",
+    "params": [1, 3]
+  },
+  {
+    "op": "move",
+    "params": [6, 0]
+  },
+  {
+    "op": "swap",
+    "params": ["f", "c"]
+  },
+  {
+    "op": "rotate based on",
+    "params": ["h"]
+  },
+  {
+    "op": "reverse",
+    "params": [6, 7]
+  }
+]
